@@ -10,6 +10,6 @@ public class DiyamondsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DiyamondsApplication.class, args);
-		System.out.println("");
+		System.out.println("Test");
 	}
 }

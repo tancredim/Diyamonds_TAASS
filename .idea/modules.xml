@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Diyamonds_TAASS.iml" filepath="$PROJECT_DIR$/.idea/Diyamonds_TAASS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Diyamonds_backend/diyamonds.iml" filepath="$PROJECT_DIR$/Diyamonds_backend/diyamonds.iml" />
     </modules>
   </component>
 </project>

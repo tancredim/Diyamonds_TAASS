@@ -1,6 +1,7 @@
 it\unito\taass\diyamonds\model\Venditore.class
 it\unito\taass\diyamonds\repo\FornitoreRepository.class
 it\unito\taass\diyamonds\repo\AnnuncioMateriaPrimaRepository.class
+it\unito\taass\diyamonds\DiyamondsApplication.class
 it\unito\taass\diyamonds\controller\FornitoreController.class
 it\unito\taass\diyamonds\repo\AnnuncioGioielloRepository.class
 it\unito\taass\diyamonds\controller\UserController.class
@@ -13,6 +14,5 @@ it\unito\taass\diyamonds\model\Fornitore.class
 it\unito\taass\diyamonds\model\MateriaPrima.class
 it\unito\taass\diyamonds\controller\AnnuncioMateriaPrimaController.class
 it\unito\taass\diyamonds\model\User.class
-it\unito\taass\diyamonds\DiymondsApplication.class
 it\unito\taass\diyamonds\controller\VenditoreController.class
 it\unito\taass\diyamonds\repo\VenditoreRepository.class

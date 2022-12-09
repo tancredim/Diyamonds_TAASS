@@ -1,0 +1,66 @@
+version: '3'
+
+services:
+  dbpostgresql:
+    container_name: postgres
+    image: "postgres"
+    ports:
+      - "5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - appbootrestnet
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      restart: unless-stopped
+  pgadmin:
+        container_name: pgadmin4
+        image: dpage/pgadmin4
+        restart: always
+        environment:
+          PGADMIN_DEFAULT_EMAIL: admin@admin.com
+          PGADMIN_DEFAULT_PASSWORD: root
+          PGADMIN_LISTEN_PORT: 50
+        ports:
+          - "5050:50"
+        volumes:
+          - pgadmin-data:/var/lib/pgadmin
+        depends_on:
+          - dbpostgresql
+        networks:
+          - appbootrestnet
+  app:
+    build: .\Diyamonds_backend
+    image: appbootrest
+    container_name: diyamonds_backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - dbpostgresql
+    networks:
+      - appbootrestnet
+    environment:
+     - SPRING_DATASOURCE_URL=jdbc:postgresql://dbpostgresql:5432/postgres
+     - SPRING_DATASOURCE_USERNAME=postgres
+     - SPRING_DATASOURCE_PASSWORD=admin
+     - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+  ui:
+    build: .\Diyamonds_frontend
+    container_name: diyamonds_frontend
+    ports:
+      - "4200:80"
+    networks:
+      - appbootrestnet
+    depends_on:
+      - app
+
+volumes:
+  db-data:
+  pgadmin-data:
+networks:
+  appbootrestnet:
+    driver: bridge
+# docker-compose build && docker-compose up
+

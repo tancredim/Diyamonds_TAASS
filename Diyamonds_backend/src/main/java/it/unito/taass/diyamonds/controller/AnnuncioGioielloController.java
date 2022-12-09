@@ -1,0 +1,25 @@
+package it.unito.taass.diyamonds.controller;
+
+import it.unito.taass.diyamonds.model.AnnuncioGioiello;
+import it.unito.taass.diyamonds.repo.AnnuncioGioielloRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/v1")
+public class AnnuncioGioielloController {
+
+    @Autowired
+    AnnuncioGioielloRepository annuncioGioielloRepository;
+
+    @GetMapping("/annunciGioielli")
+    public List<AnnuncioGioiello> getAllAnnunciGioielli() {
+        System.out.println("Get all Annunci Gioielli");
+        List<AnnuncioGioiello> annunciGioielli = new ArrayList<>();
+        annuncioGioielloRepository.findAll().forEach(annunciGioielli::add);
+        return annunciGioielli;
+    }
+}

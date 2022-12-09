@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -21,5 +22,13 @@ public class AnnuncioGioielloController {
         List<AnnuncioGioiello> annunciGioielli = new ArrayList<>();
         annuncioGioielloRepository.findAll().forEach(annunciGioielli::add);
         return annunciGioielli;
+    }
+
+
+    @GetMapping("/annunciGioielli/{id}")
+    public AnnuncioGioiello getAnnuncioById(@PathVariable("id") long id) {
+        Optional<AnnuncioGioiello> ag = annuncioGioielloRepository.findById(id);
+        AnnuncioGioiello annuncioGioiello = ag.get();
+        return annuncioGioiello;
     }
 }

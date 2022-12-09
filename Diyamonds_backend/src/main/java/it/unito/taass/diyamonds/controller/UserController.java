@@ -67,6 +67,7 @@ public class UserController {
         userRepository.findAll().forEach(users::add);
         return users;
     }
+
     @DeleteMapping("/users/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable("id") long id) {
         System.out.println("Delete User with ID = " + id + "...");

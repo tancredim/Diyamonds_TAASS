@@ -10,5 +10,6 @@ public class DiymondsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DiymondsApplication.class, args);
+		System.out.println("");
 	}
 }

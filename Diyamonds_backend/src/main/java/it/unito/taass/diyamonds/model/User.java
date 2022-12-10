@@ -118,7 +118,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "ListaAnnunci{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", nome='" + nome + '\'' +

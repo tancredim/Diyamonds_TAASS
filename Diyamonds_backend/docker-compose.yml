@@ -12,7 +12,7 @@ services:
       - appbootrestnet
     environment:
       POSTGRES_DB: postgres
-      POSTGRES_USER: postgres
+      POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
       restart: unless-stopped
   pgadmin:
@@ -43,7 +43,7 @@ services:
       - appbootrestnet
     environment:
      - SPRING_DATASOURCE_URL=jdbc:postgresql://dbpostgresql:5432/postgres
-     - SPRING_DATASOURCE_USERNAME=postgres
+     - SPRING_DATASOURCE_USERNAME=admin
      - SPRING_DATASOURCE_PASSWORD=admin
      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
 volumes:

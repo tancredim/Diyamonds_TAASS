@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/v1")
 public class UserController {
@@ -69,9 +69,9 @@ public class UserController {
     }
     @DeleteMapping("/users/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable("id") long id) {
-        System.out.println("Delete User with ID = " + id + "...");
+        System.out.println("Delete ListaAnnunci with ID = " + id + "...");
         userRepository.deleteById(id);
-        return new ResponseEntity<>("User has been deleted!", HttpStatus.OK);
+        return new ResponseEntity<>("ListaAnnunci has been deleted!", HttpStatus.OK);
     }
 
     @DeleteMapping("/users/delete")

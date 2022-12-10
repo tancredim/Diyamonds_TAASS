@@ -44,7 +44,7 @@ public class VenditoreController {
 
     @DeleteMapping("/venditori/{id}")
     public ResponseEntity<String> deleteVenditore(@PathVariable("id") long id) {
-        System.out.println("Delete User with ID = " + id + "...");
+        System.out.println("Delete ListaAnnunci with ID = " + id + "...");
         venditoreRepository.deleteById(id);
         return new ResponseEntity<>("Venditore has been deleted!", HttpStatus.OK);
     }

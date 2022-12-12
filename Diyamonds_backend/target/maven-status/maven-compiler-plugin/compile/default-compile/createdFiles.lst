@@ -2,6 +2,7 @@ it\unito\taass\diyamonds\model\Venditore.class
 it\unito\taass\diyamonds\repo\FornitoreRepository.class
 it\unito\taass\diyamonds\repo\AnnuncioMateriaPrimaRepository.class
 it\unito\taass\diyamonds\DiyamondsApplication.class
+it\unito\taass\diyamonds\controller\OAuth2Controller.class
 it\unito\taass\diyamonds\controller\FornitoreController.class
 it\unito\taass\diyamonds\repo\AnnuncioGioielloRepository.class
 it\unito\taass\diyamonds\controller\UserController.class

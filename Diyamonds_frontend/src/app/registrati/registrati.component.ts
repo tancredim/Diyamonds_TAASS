@@ -2,6 +2,7 @@ import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../userService';
 
 @Component({
   selector: 'app-registrati',
@@ -15,9 +16,10 @@ export class RegistratiComponent implements OnInit {
   email!: string;
   nome!: string;
   cognome!: string;
+  userString! : string;
 
   constructor(
-    private http: HttpClient,
+    private userService: UserService,
     private authService: SocialAuthService,
     private router: Router
   ) {}
@@ -31,21 +33,20 @@ export class RegistratiComponent implements OnInit {
     });
   }
 
-  completaLaRegistrazione(infoUtente: {username: string, nome: string, cognome: string, email: string, passoword: string, telefono: string, isVenditoreFornitore: number}) {
+  private addNewUser(body: JSON) {
+    this.userService.addUser(body).subscribe((res) => {console.log("res: " + res);});
+  }
+
+  completaLaRegistrazione(infoUtente: {username: string, nome: string, cognome: string, email: string, password: string, isVenditoreFornitore: number, telefono: string}) {
     infoUtente.nome = this.nome;
     infoUtente.cognome = this.cognome;
     infoUtente.email = this.email;
     const headers = new HttpHeaders({'myHeader':'test'});
     headers.append('Content-Type', 'application/json');
     headers.append('Accept', 'application/json');
-    headers.append('Access-Control-Allow-Origin', 'http://localhost:8080');
+    headers.append('Access-Control-Allow-Origin', 'http://localhost:4200');
     headers.append('Access-Control-Allow-Credentials', 'true');
-    
-    this.http.post(
-      'http://localhost:8080/api/v1/user/add',
-      infoUtente, {headers: headers})
-    .subscribe((res) => {
-      console.log("res: " + res);
-    });
+    this.userString = JSON.stringify(infoUtente);
+    this.addNewUser(JSON.parse(this.userString));
   }
 }

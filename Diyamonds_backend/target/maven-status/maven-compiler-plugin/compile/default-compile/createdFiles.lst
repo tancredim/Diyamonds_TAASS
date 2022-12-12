@@ -9,6 +9,7 @@ it\unito\taass\diyamonds\controller\UserController.class
 it\unito\taass\diyamonds\model\AnnuncioMateriaPrima.class
 it\unito\taass\diyamonds\repo\UserRepository.class
 it\unito\taass\diyamonds\controller\AnnuncioGioielloController.class
+it\unito\taass\diyamonds\config\WebConfig.class
 it\unito\taass\diyamonds\model\Gioiello.class
 it\unito\taass\diyamonds\model\AnnuncioGioiello.class
 it\unito\taass\diyamonds\model\Fornitore.class

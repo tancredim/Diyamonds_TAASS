@@ -15,6 +15,7 @@ import { MenuComponent } from './menu/menu.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RegistratiComponent } from './registrati/registrati.component';
+import { RegistrazioneCompletataComponent } from './registrazione-completata/registrazione-completata.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { RegistratiComponent } from './registrati/registrati.component';
     MenuComponent,
     LoginComponent,
     HomeComponent,
-    RegistratiComponent
+    RegistratiComponent,
+    RegistrazioneCompletataComponent
   ],
   imports: [
     BrowserModule,

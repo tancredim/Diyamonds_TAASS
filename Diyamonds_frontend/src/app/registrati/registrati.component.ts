@@ -26,7 +26,7 @@ export class RegistratiComponent implements OnInit {
 
   ngOnInit() {
     this.authService.authState.subscribe((user) => {
-      user = history.state.data;
+      this.user = history.state.data;
       this.email = user.email;
       this.nome = user.firstName;
       this.cognome = user.lastName;
@@ -48,5 +48,16 @@ export class RegistratiComponent implements OnInit {
     headers.append('Access-Control-Allow-Credentials', 'true');
     this.userString = JSON.stringify(infoUtente);
     this.addNewUser(JSON.parse(this.userString));
+    console.log(JSON.parse(this.userString));
+    this.goToRegistrazioneCompletata(this.user, this.userString);    
   }
+
+  goToRegistrazioneCompletata(user: SocialUser, userString: string): void {
+
+    setTimeout(() => {
+      this.router.navigate(['/registrazioneCompletata'], {state: {data: user, userString: userString}});
+      console.log(user.email+" _ "+ userString);
+    }, 3000);  //3s
+  }
+
 }

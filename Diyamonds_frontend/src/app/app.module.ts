@@ -17,6 +17,14 @@ import { HomeComponent } from './home/home.component';
 import { RegistratiComponent } from './registrati/registrati.component';
 import { RegistrazioneCompletataComponent } from './registrazione-completata/registrazione-completata.component';
 
+import { MatSelectModule} from '@angular/material/select';
+import{MatFormFieldModule} from '@angular/material/form-field';
+import{MatInputModule} from '@angular/material/input';
+import {MatListModule} from '@angular/material/list'; 
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -25,14 +33,22 @@ import { RegistrazioneCompletataComponent } from './registrazione-completata/reg
     LoginComponent,
     HomeComponent,
     RegistratiComponent,
-    RegistrazioneCompletataComponent
+    RegistrazioneCompletataComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SocialLoginModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatListModule,
+    MatTabsModule,
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [
     {

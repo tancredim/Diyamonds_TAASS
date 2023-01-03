@@ -1,2 +1,40 @@
 <app-menu></app-menu>
-<p>home works!</p>
+<br><br>
+<mat-card>
+    <form class="example-form" align="center">
+        <mat-form-field class="example-full-width">
+          <mat-label>Cosa cerchi?</mat-label>
+          <input matInput placeholder="Ex. Gioiello">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>In quale categoria?</mat-label>
+            <mat-select>
+                <mat-option value="gioiello">Gioiello</mat-option>
+                <mat-option value="materiaPrima">Materia Prima</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Dove?</mat-label>
+            <input matInput placeholder="Ex. Torino">
+          </mat-form-field>
+        <button mat-button color="primary">Cerca</button>
+    </form>
+</mat-card>
+<mat-divider></mat-divider>
+<mat-card>
+    <h2 align="center"> Esplora le nostre sezioni</h2>
+    <mat-tab-group>
+        <mat-tab label="TabGioiello"> 
+            <mat-action-list>
+                <button mat-list-item  *ngFor ="let gioiello of gioielli"> {{gioiello.viewValue}}</button>
+            </mat-action-list>  
+        </mat-tab>
+        <mat-tab label="TabMateriaPrima">
+            <mat-action-list>
+                <button mat-list-item *ngFor ="let matPrima of materiaPrima"> {{matPrima.viewValue}}</button>
+           
+            </mat-action-list>              
+        </mat-tab>
+      </mat-tab-group>
+      
+</mat-card>

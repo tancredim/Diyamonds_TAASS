@@ -6,9 +6,10 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
 @EntityScan("it.unito.taass.diyamonds.model")
-public class DiymondsApplication {
+public class DiyamondsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DiymondsApplication.class, args);
+		SpringApplication.run(DiyamondsApplication.class, args);
+		System.out.println("Test");
 	}
 }

@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';  // <<<< import it here
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ListaAnnunciComponent } from './listaAnnunci/listaAnnunci.component';
-import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 //social login
 
@@ -18,25 +17,38 @@ import { HomeComponent } from './home/home.component';
 import { RegistratiComponent } from './registrati/registrati.component';
 import { RegistrazioneCompletataComponent } from './registrazione-completata/registrazione-completata.component';
 
+import { MatSelectModule} from '@angular/material/select';
+import{MatFormFieldModule} from '@angular/material/form-field';
+import{MatInputModule} from '@angular/material/input';
+import {MatListModule} from '@angular/material/list'; 
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListaAnnunciComponent,
     MenuComponent,
     LoginComponent,
     HomeComponent,
     RegistratiComponent,
-    RegistrazioneCompletataComponent
-
+    RegistrazioneCompletataComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     SocialLoginModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatListModule,
+    MatTabsModule,
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [
     {
@@ -50,12 +62,11 @@ import { RegistrazioneCompletataComponent } from './registrazione-completata/reg
               '161802106758-ripnn5634ofji41akrgpgktcdl25ecuk.apps.googleusercontent.com'
             )
           }],
-        onError: (err: any) => {
+        onError: (err) => {
           console.error(err);
         }
       } as SocialAuthServiceConfig,
     }
-
   ],
   bootstrap: [AppComponent]
 })

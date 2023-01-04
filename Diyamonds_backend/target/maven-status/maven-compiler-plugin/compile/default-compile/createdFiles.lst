@@ -15,11 +15,6 @@ it\unito\taass\diyamonds\model\AnnuncioGioiello.class
 it\unito\taass\diyamonds\model\Fornitore.class
 it\unito\taass\diyamonds\model\MateriaPrima.class
 it\unito\taass\diyamonds\controller\AnnuncioMateriaPrimaController.class
-<<<<<<< HEAD
-it\unito\taass\diyamonds\model\ListaAnnunci.class
-it\unito\taass\diyamonds\DiymondsApplication.class
-=======
 it\unito\taass\diyamonds\model\User.class
->>>>>>> d524c64d09250513251b2dfb7ead6bc13b5ae4c9
 it\unito\taass\diyamonds\controller\VenditoreController.class
 it\unito\taass\diyamonds\repo\VenditoreRepository.class

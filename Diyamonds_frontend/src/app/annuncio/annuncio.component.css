@@ -1,0 +1,62 @@
+body{
+  margin-top:20px;
+  background:#eee;
+}
+
+
+.product-content {
+  border: 1px solid #dfe5e9;
+  margin-bottom: 20px;
+  margin-top: 12px;
+  background: #fff
+}
+
+
+.product-content .product-image {
+  background-color: #fff;
+  display: block;
+  min-height: 238px;
+  overflow: hidden;
+  position: relative
+}
+
+.product-content .description {
+  font-size: 16px;
+  line-height: 20px;
+  padding: 10px 14px 16px 19px;
+  background: #fff;
+  padding: 0 0 5px;
+
+}
+
+.product-content .descriptionContent{
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+
+.product-deatil {
+  padding: 30px 30px 50px
+}
+
+
+.product-deatil .price-container {
+  font-size: 24px;
+  margin: 0;
+
+}
+
+.product-deatil .name{
+  font-size: 24px;
+}
+
+.btn-success{
+  background-color: #2650ff;
+  width: 180px;
+  --bs-btn-active-bg: #009fff;
+
+}
+.btn:hover{
+ background-color: #4f74ff;
+}
+

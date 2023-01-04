@@ -12,11 +12,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-<<<<<<< HEAD
-@CrossOrigin("*")
-=======
+
 @CrossOrigin(origins = "http://localhost:4200")
->>>>>>> d524c64d09250513251b2dfb7ead6bc13b5ae4c9
+
 @RestController
 @RequestMapping("/api/v1")
 public class UserController {

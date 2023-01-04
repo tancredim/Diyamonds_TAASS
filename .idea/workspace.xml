@@ -4,170 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="29c94aec-c32d-42f1-a057-9253f0c78ec1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_backend/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_backend/diyamonds.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_backend/src/main/java/it/unito/taass/diyamonds/config/WebConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_backend/src/main/java/it/unito/taass/diyamonds/controller/OAuth2Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_backend/target/classes/it/unito/taass/diyamonds/DiyamondsApplication.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_backend/target/classes/it/unito/taass/diyamonds/config/WebConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_backend/target/classes/it/unito/taass/diyamonds/controller/OAuth2Controller.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/proxy.conf.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/home/home.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/home/home.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/home/home.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/home/home.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/login/login.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/login/login.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/login/login.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/login/login.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/menu/menu.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/menu/menu.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/menu/menu.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/menu/menu.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/registrati/registrati.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/registrati/registrati.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/registrati/registrati.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/registrati/registrati.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/registrazione-completata/registrazione-completata.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/registrazione-completata/registrazione-completata.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/registrazione-completata/registrazione-completata.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/registrazione-completata/registrazione-completata.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/user.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/userService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_backend/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_backend/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/jpa-buddy.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__com_fasterxml_classmate_1_3_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_3_4.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_9_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_9_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_9_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_9_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_9_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_9_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_9_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_9_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_4_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_4_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__com_sun_istack_istack_commons_runtime_3_0_8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_istack_istack_commons_runtime_3_0_8.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__com_sun_xml_bind_jaxb_core_4_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_bind_jaxb_core_4_0_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__com_sun_xml_bind_jaxb_impl_4_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_bind_jaxb_impl_4_0_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__com_sun_xml_bind_jaxb_jxc_4_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_bind_jaxb_jxc_4_0_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__com_sun_xml_bind_jaxb_xjc_4_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_bind_jaxb_xjc_4_0_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__com_sun_xml_fastinfoset_FastInfoset_1_2_16.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_fastinfoset_FastInfoset_1_2_16.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__com_zaxxer_HikariCP_2_7_9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_2_7_9.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__dom4j_dom4j_1_6_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__dom4j_dom4j_1_6_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__jakarta_activation_jakarta_activation_api_1_2_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_activation_jakarta_activation_api_1_2_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__jakarta_xml_bind_jakarta_xml_bind_api_2_3_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_xml_bind_jakarta_xml_bind_api_2_3_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_3_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_3_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__javax_transaction_javax_transaction_api_1_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_transaction_javax_transaction_api_1_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__javax_validation_validation_api_2_0_1_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_2_0_1_Final.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__junit_junit_4_12.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_7_11.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_7_11.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_7_11.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_7_11.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__net_minidev_accessors_smart_1_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_accessors_smart_1_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__net_minidev_json_smart_2_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_json_smart_2_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_10_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_10_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_10_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_10_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_8_5_31.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_8_5_31.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_8_5_31.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_8_5_31.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_8_5_31.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_8_5_31.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_8_13.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_8_13.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_assertj_assertj_core_3_9_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_3_9_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_eclipse_angus_angus_activation_1_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_angus_angus_activation_1_0_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_glassfish_jaxb_jaxb_runtime_2_3_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_jaxb_runtime_2_3_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_glassfish_jaxb_txw2_2_3_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_txw2_2_3_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_hamcrest_hamcrest_library_1_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_library_1_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_0_1_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_0_1_Final.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_hibernate_hibernate_core_5_2_17_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_core_5_2_17_Final.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_hibernate_javax_persistence_hibernate_jpa_2_1_api_1_0_2_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_javax_persistence_hibernate_jpa_2_1_api_1_0_2_Final.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_0_10_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_0_10_Final.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_javassist_javassist_3_23_1_GA.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_23_1_GA.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_jboss_jandex_2_0_3_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_jandex_2_0_3_Final.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_2_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_2_Final.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_jvnet_staxex_stax_ex_1_8_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jvnet_staxex_stax_ex_1_8_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_mockito_mockito_core_2_15_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_2_15_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_objenesis_objenesis_2_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_2_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_ow2_asm_asm_5_0_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_5_0_4.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_postgresql_postgresql_42_2_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_postgresql_postgresql_42_2_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_5_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_5_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_25.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_25.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_0_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_0_3_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_0_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_0_3_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_0_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_0_3_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_0_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_0_3_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_jpa_2_0_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_jpa_2_0_3_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_0_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_0_3_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_0_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_0_3_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_0_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_0_3_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_2_0_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_2_0_3_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_0_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_0_3_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_0_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_0_3_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_2_0_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_2_0_3_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_2_0_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_2_0_3_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_data_spring_data_commons_2_0_8_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_2_0_8_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_2_0_8_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_2_0_8_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_spring_aop_5_0_7_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_0_7_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_spring_aspects_5_0_7_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aspects_5_0_7_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_spring_beans_5_0_7_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_0_7_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_spring_context_5_0_7_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_0_7_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_spring_core_5_0_7_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_0_7_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_spring_expression_5_0_7_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_0_7_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_spring_jcl_5_0_7_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_0_7_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_spring_jdbc_5_0_7_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_5_0_7_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_spring_orm_5_0_7_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_orm_5_0_7_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_spring_test_5_0_7_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_5_0_7_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_spring_tx_5_0_7_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_5_0_7_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_spring_web_5_0_7_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_0_7_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_springframework_spring_webmvc_5_0_7_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_0_7_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_5_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_5_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/libraries/Maven__org_yaml_snakeyaml_1_19.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_19.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_backend/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_backend/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/src/main/java/it/unito/taass/diyamonds/DiymondsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_backend/src/main/java/it/unito/taass/diyamonds/DiyamondsApplication.java" afterDir="false" />
+    <list default="true" id="29c94aec-c32d-42f1-a057-9253f0c78ec1" name="Changes" comment="commit da intellij">
+      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/annuncio/annuncio.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/annuncio/annuncio.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/annuncio/annuncio.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/annuncio/annuncio.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Diyamonds_backend/src/main/java/it/unito/taass/diyamonds/controller/AnnuncioGioielloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_backend/src/main/java/it/unito/taass/diyamonds/controller/AnnuncioGioielloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/src/main/java/it/unito/taass/diyamonds/controller/AnnuncioMateriaPrimaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_backend/src/main/java/it/unito/taass/diyamonds/controller/AnnuncioMateriaPrimaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/src/main/java/it/unito/taass/diyamonds/controller/FornitoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_backend/src/main/java/it/unito/taass/diyamonds/controller/FornitoreController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Diyamonds_backend/src/main/java/it/unito/taass/diyamonds/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_backend/src/main/java/it/unito/taass/diyamonds/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/src/main/java/it/unito/taass/diyamonds/controller/VenditoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_backend/src/main/java/it/unito/taass/diyamonds/controller/VenditoreController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/src/main/java/it/unito/taass/diyamonds/repo/AnnuncioGioielloRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_backend/src/main/java/it/unito/taass/diyamonds/repo/AnnuncioGioielloRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_backend/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Diyamonds_backend/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_backend/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/target/classes/it/unito/taass/diyamonds/DiymondsApplication.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Diyamonds_backend/target/classes/it/unito/taass/diyamonds/controller/AnnuncioGioielloController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_backend/target/classes/it/unito/taass/diyamonds/controller/AnnuncioGioielloController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/target/classes/it/unito/taass/diyamonds/controller/AnnuncioMateriaPrimaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_backend/target/classes/it/unito/taass/diyamonds/controller/AnnuncioMateriaPrimaController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Diyamonds_backend/target/classes/it/unito/taass/diyamonds/controller/FornitoreController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_backend/target/classes/it/unito/taass/diyamonds/controller/FornitoreController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Diyamonds_backend/target/classes/it/unito/taass/diyamonds/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_backend/target/classes/it/unito/taass/diyamonds/controller/UserController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Diyamonds_backend/target/classes/it/unito/taass/diyamonds/controller/VenditoreController.class" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_backend/target/classes/it/unito/taass/diyamonds/controller/VenditoreController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/target/classes/it/unito/taass/diyamonds/repo/AnnuncioGioielloRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_backend/target/classes/it/unito/taass/diyamonds/repo/AnnuncioGioielloRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/target/classes/it/unito/taass/diyamonds/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_backend/target/classes/it/unito/taass/diyamonds/model/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Diyamonds_backend/target/diyamonds_backend.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_backend/target/diyamonds_backend.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Diyamonds_backend/target/diyamonds_backend.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_backend/target/diyamonds_backend.jar.original" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Diyamonds_backend/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_backend/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Diyamonds_backend/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_backend/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diyamonds_backend/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_backend/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/angular.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/app.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,21 +58,36 @@
     </option>
   </component>
   <component name="ProjectId" id="2IgxoG178SqxKy7NtTNhbmN83kF" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "C:/Users/Matteo/Desktop/spring-boot-angular-oauth2-social-login-demo",
+    "nodejs_package_manager_path": "npm",
+    "spring.configuration.checksum": "2c793381ea97dd27caf9fa8373b0f33a",
     "ts.external.directory.path": "C:\\Users\\Davide\\Desktop\\Dymonds\\Diyamonds_TAASS\\Diyamonds_frontend\\node_modules\\typescript\\lib"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="DiyamondsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="diyamonds" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="it.unito.taass.diyamonds.DiyamondsApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -218,6 +96,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670617207425</updated>
+      <workItem from="1672841122910" duration="13247000" />
     </task>
     <task id="LOCAL-00001" summary="modificate impostazioni di sistema">
       <created>1670617333389</created>
@@ -235,6 +114,9 @@
     </task>
     <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="UnknownFeatures">
     <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
@@ -257,6 +139,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="modificate impostazioni di sistema" />
     <MESSAGE value="commit da intellij" />
     <option name="LAST_COMMIT_MESSAGE" value="commit da intellij" />

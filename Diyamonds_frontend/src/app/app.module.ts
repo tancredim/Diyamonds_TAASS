@@ -20,12 +20,13 @@ import { RegistrazioneCompletataComponent } from './registrazione-completata/reg
 import { MatSelectModule} from '@angular/material/select';
 import{MatFormFieldModule} from '@angular/material/form-field';
 import{MatInputModule} from '@angular/material/input';
-import {MatListModule} from '@angular/material/list'; 
+import {MatListModule} from '@angular/material/list';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListaAnnunciComponent } from './listaAnnunci/listaAnnunci.component';
+import {AnnuncioComponent} from "./annuncio/annuncio.component";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ListaAnnunciComponent } from './listaAnnunci/listaAnnunci.component';
     HomeComponent,
     RegistratiComponent,
     RegistrazioneCompletataComponent,
-    ListaAnnunciComponent
+    ListaAnnunciComponent,
+    AnnuncioComponent
   ],
   imports: [
     BrowserModule,

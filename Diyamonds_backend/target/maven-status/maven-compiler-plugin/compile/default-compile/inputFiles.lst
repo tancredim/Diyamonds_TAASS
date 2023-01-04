@@ -1,12 +1,13 @@
-<<<<<<< HEAD
-C:\Users\Davide\Desktop\Dymonds\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\model\ListaAnnunci.java
+C:\Users\Davide\Desktop\Dymonds\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\model\User.java
 C:\Users\Davide\Desktop\Dymonds\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\model\AnnuncioGioiello.java
 C:\Users\Davide\Desktop\Dymonds\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\repo\AnnuncioGioielloRepository.java
 C:\Users\Davide\Desktop\Dymonds\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\repo\FornitoreRepository.java
 C:\Users\Davide\Desktop\Dymonds\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\model\AnnuncioMateriaPrima.java
+C:\Users\Davide\Desktop\Dymonds\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\DiyamondsApplication.java
 C:\Users\Davide\Desktop\Dymonds\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\repo\UserRepository.java
 C:\Users\Davide\Desktop\Dymonds\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\repo\VenditoreRepository.java
 C:\Users\Davide\Desktop\Dymonds\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\controller\VenditoreController.java
+C:\Users\Davide\Desktop\Dymonds\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\config\WebConfig.java
 C:\Users\Davide\Desktop\Dymonds\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\controller\UserController.java
 C:\Users\Davide\Desktop\Dymonds\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\model\Gioiello.java
 C:\Users\Davide\Desktop\Dymonds\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\model\MateriaPrima.java
@@ -14,28 +15,6 @@ C:\Users\Davide\Desktop\Dymonds\Diyamonds_TAASS\Diyamonds_backend\src\main\java\
 C:\Users\Davide\Desktop\Dymonds\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\model\Fornitore.java
 C:\Users\Davide\Desktop\Dymonds\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\controller\AnnuncioMateriaPrimaController.java
 C:\Users\Davide\Desktop\Dymonds\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\controller\FornitoreController.java
+C:\Users\Davide\Desktop\Dymonds\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\controller\OAuth2Controller.java
 C:\Users\Davide\Desktop\Dymonds\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\model\Venditore.java
-C:\Users\Davide\Desktop\Dymonds\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\DiymondsApplication.java
 C:\Users\Davide\Desktop\Dymonds\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\controller\AnnuncioGioielloController.java
-=======
-C:\Users\Matteo\Desktop\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\model\AnnuncioGioiello.java
-C:\Users\Matteo\Desktop\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\controller\UserController.java
-C:\Users\Matteo\Desktop\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\repo\VenditoreRepository.java
-C:\Users\Matteo\Desktop\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\controller\VenditoreController.java
-C:\Users\Matteo\Desktop\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\controller\FornitoreController.java
-C:\Users\Matteo\Desktop\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\repo\UserRepository.java
-C:\Users\Matteo\Desktop\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\controller\OAuth2Controller.java
-C:\Users\Matteo\Desktop\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\repo\AnnuncioGioielloRepository.java
-C:\Users\Matteo\Desktop\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\model\MateriaPrima.java
-C:\Users\Matteo\Desktop\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\model\User.java
-C:\Users\Matteo\Desktop\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\DiyamondsApplication.java
-C:\Users\Matteo\Desktop\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\repo\AnnuncioMateriaPrimaRepository.java
-C:\Users\Matteo\Desktop\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\model\AnnuncioMateriaPrima.java
-C:\Users\Matteo\Desktop\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\model\Fornitore.java
-C:\Users\Matteo\Desktop\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\controller\AnnuncioGioielloController.java
-C:\Users\Matteo\Desktop\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\controller\AnnuncioMateriaPrimaController.java
-C:\Users\Matteo\Desktop\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\model\Gioiello.java
-C:\Users\Matteo\Desktop\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\config\WebConfig.java
-C:\Users\Matteo\Desktop\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\repo\FornitoreRepository.java
-C:\Users\Matteo\Desktop\Diyamonds_TAASS\Diyamonds_backend\src\main\java\it\unito\taass\diyamonds\model\Venditore.java
->>>>>>> d524c64d09250513251b2dfb7ead6bc13b5ae4c9

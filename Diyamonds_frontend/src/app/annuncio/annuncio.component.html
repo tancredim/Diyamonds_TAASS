@@ -1,33 +1,40 @@
+<app-menu></app-menu>
+
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
 <div class="container">
   <!-- product -->
   <div class="product-content product-wrap clearfix product-deatil">
     <div class="row">
       <div class="product-image col-md-5 col-sm-12 col-xs-12">
-          <img src="https://www.bootdey.com/image/700x400/FFB6C1/000000" class="img-responsive" alt="" />
+          <img src="/assets/images/gioiello1.jpg" />
       </div>
 
       <div class="column col-md-6 col-md-offset-1 col-sm-12 col-xs-12">
         <h2 class ="name">
-          Product Name Title Here
+          {{annuncio?.gioiello}}
         </h2>
+        <span class=" location" > <i class="fa fa-map-pin" aria-hidden="true"></i>
+              Torino (TO) </span>
         <hr />
-        <h3 class="price-container font-size-lg text-primary pt-2">
-          $129.54
-        </h3>
+        <div class="price-container font-size-lg text-primary pt-2">
+          {{annuncio?.prezzo}} €
+          <input class="quantitaGioielli " type = "number" placeholder="Qty.">
+        </div>
+
         <hr />
         <div class="description description-tabs">
-          <strong>Description Title</strong>
+          <strong>Descrizione </strong>
           <p class =descriptionContent>
-            Integer egestas, orci id condimentum eleifend, nibh nisi pulvinar eros, vitae ornare massa neque ut orci. Nam aliquet lectus sed odio eleifend, at iaculis dolor egestas. Nunc elementum pellentesque augue
-            sodales porta. Etiam aliquet rutrum turpis, feugiat sodales ipsum consectetur nec.
+            {{annuncio?.descrizione}}
           </p>
         </div>
         <hr />
         <div class="row">
           <div class="contatta col-sm-12 col-md-6 col-lg-6">
-            <a href="javascript:void(0);" class="btn btn-success btn-lg "><i class="fa fa-envelope"></i> Contatta </a>
+            <a href="javascript:void(0);" class="btn btn-success btn-lg "><i class="fa fa-comments-o" ></i> Contatta </a>
+
           </div>
+          <a href="javascript:void(0);" class="btn btn-success btn-lg "><i class="fa fa-credit-card" ></i> Acquista </a>
 
         </div>
       </div>

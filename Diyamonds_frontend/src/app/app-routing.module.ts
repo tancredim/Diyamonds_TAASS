@@ -13,7 +13,11 @@ const routes: Routes = [
   {path: 'registrati', component: RegistratiComponent},
   {path: 'registrazioneCompletata', component: RegistrazioneCompletataComponent},
   {path: 'listaAnnunci',component :ListaAnnunciComponent},
-  {path: 'annuncio',component:AnnuncioComponent},
+  {path: 'annuncio/:id',component:AnnuncioComponent, children: [
+
+      { path: ':id', component: AnnuncioComponent }
+
+    ]},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 
 ];

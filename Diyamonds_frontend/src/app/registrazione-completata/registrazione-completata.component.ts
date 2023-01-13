@@ -1,6 +1,7 @@
 import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from '../user';
 
 @Component({
   selector: 'app-registrazione-completata',
@@ -11,6 +12,7 @@ export class RegistrazioneCompletataComponent implements OnInit {
 
   private userString!: string;
   private user!: SocialUser;
+  private user2!: User;
 
   constructor(
     private router: Router,
@@ -20,16 +22,19 @@ export class RegistrazioneCompletataComponent implements OnInit {
   ngOnInit() {
     this.authService.authState.subscribe((user) => {
       this.user = history.state.data;
-      this.userString = history.state.userString;
+      this.user2 = history.state.infoUtente;
       console.log(this.user.email)
-      this.goToHome(this.user, this.userString);
+      console.log("INFO UTENTE")
+      console.log(this.user2)
+      this.goToHome(this.user, this.user2);
     });
   }
 
-  goToHome(user: SocialUser, userString: string) {
+  goToHome(user: SocialUser, user2: User) {
     setTimeout(() => {
-      this.router.navigate(['/'], {state: {data: user, userString: userString}});
-      console.log(user.email+" SIAMO QUI _ "+ userString);  }, 2000);  //5s
+      this.router.navigate(['/'], {state: {data: user, user2: this.user2}});
+      console.log("SIAMO QUIIUII");
+      console.log(user2);  }, 2000);  //5s
   }
 
 }

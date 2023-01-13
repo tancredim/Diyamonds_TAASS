@@ -24,6 +24,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.authService.authState.subscribe((user) => {
+      console.log("IDTOKEN");
+      console.log(user.idToken);
+      console.log(user.idToken);
       this.user = user;
       this.loggedIn = (user != null);
       this.goToRegistrati();

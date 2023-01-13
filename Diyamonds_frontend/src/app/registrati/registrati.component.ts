@@ -2,6 +2,7 @@ import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from '../user';
 import { UserService } from '../userService';
 
 @Component({
@@ -49,14 +50,14 @@ export class RegistratiComponent implements OnInit {
     this.userString = JSON.stringify(infoUtente);
     this.addNewUser(JSON.parse(this.userString));
     console.log(JSON.parse(this.userString));
-    this.goToRegistrazioneCompletata(this.user, this.userString);    
+    this.goToRegistrazioneCompletata(this.user, infoUtente);    
   }
 
-  goToRegistrazioneCompletata(user: SocialUser, userString: string): void {
+  goToRegistrazioneCompletata(user: SocialUser, infoUtente: User): void {
 
     setTimeout(() => {
-      this.router.navigate(['/registrazioneCompletata'], {state: {data: user, userString: userString}});
-      console.log(user.email+" _ "+ userString);
+      this.router.navigate(['/registrazioneCompletata'], {state: {data: user, infoUtente: infoUtente}});
+      console.log(user.email+" _ "+ user);
     }, 3000);  //3s
   }
 

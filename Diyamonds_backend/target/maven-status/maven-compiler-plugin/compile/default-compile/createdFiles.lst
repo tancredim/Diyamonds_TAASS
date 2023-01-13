@@ -1,5 +1,6 @@
 it\unito\taass\diyamonds\model\Venditore.class
 it\unito\taass\diyamonds\repo\FornitoreRepository.class
+it\unito\taass\diyamonds\dto\TokenDTO.class
 it\unito\taass\diyamonds\repo\AnnuncioMateriaPrimaRepository.class
 it\unito\taass\diyamonds\DiyamondsApplication.class
 it\unito\taass\diyamonds\controller\OAuth2Controller.class

@@ -1,5 +1,7 @@
 import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from '../user';
 
 
 export interface Gioiello {
@@ -20,15 +22,21 @@ export interface MateriaPrima {
 
 export class HomeComponent implements OnInit{
 
-  user!: SocialUser;
-  userString!: string;
-  authService!: SocialAuthService
+  private user!: SocialUser;
+  private userString!: string;
+  private user2!: User;
+
+  constructor(
+    private router: Router,
+    private authService: SocialAuthService
+  ) {}
 
   ngOnInit() {
     this.authService.authState.subscribe((user) => {
+      console.log("HOME");
       this.user = history.state.data;
-      this.userString = history.state.userString;
-      console.log(this.user.email);
+      this.user2 = history.state.user2;
+      console.log(this.user2);
     });
   }
   gioielli: Gioiello[] = [

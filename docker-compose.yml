@@ -1,35 +1,31 @@
-version: '3'
+version: '3.8'
 
 services:
-  dbpostgresql:
-    container_name: postgres
-    image: "postgres"
-    ports:
-      - "5432"
-    volumes:
-      - db-data:/var/lib/postgresql/data
-    networks:
-      - appbootrestnet
+  rabbitmq3:
+    container_name: rabbitmq
+    image: rabbitmq:3.8-management-alpine
     environment:
-      POSTGRES_DB: postgres
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
-      restart: unless-stopped
-  app:
-    build: .\Diyamonds_backend
-    image: appbootrest
-    container_name: diyamonds_backend
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
     ports:
-      - "8080:8080"
+      # AMQP protocol port
+      - '5672:5672'
+      # HTTP management UI
+      - '15672:15672'
+    networks:
+      - rabbitmq
+  eureka-server:
+    build: .\eurekaServer
+    container_name: eureka-server
+    expose:
+      - 8761
+  api-gateway:
+    build: .\apiGateway
+    container_name: api-gateway
+    expose:
+      - 8080
     depends_on:
-      - dbpostgresql
-    networks:
-      - appbootrestnet
-    environment:
-     - SPRING_DATASOURCE_URL=jdbc:postgresql://dbpostgresql:5432/postgres
-     - SPRING_DATASOURCE_USERNAME=admin
-     - SPRING_DATASOURCE_PASSWORD=admin
-     - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - eureka-server
   ui:
     build: .\Diyamonds_frontend
     container_name: diyamonds_frontend
@@ -37,13 +33,9 @@ services:
       - "4200:80"
     networks:
       - appbootrestnet
-    depends_on:
-      - app
-
-volumes:
-  db-data:
-  pgadmin-data:
 networks:
+  rabbitmq:
+    driver: bridge
   appbootrestnet:
     driver: bridge
 # docker-compose build && docker-compose up

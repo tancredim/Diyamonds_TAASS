@@ -3,7 +3,9 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/Diyamonds_backend/pom.xml" />
+        <option value="$PROJECT_DIR$/Diyamonds_backend_1/pom.xml" />
+        <option value="$PROJECT_DIR$/Diyamonds_backend_2/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>

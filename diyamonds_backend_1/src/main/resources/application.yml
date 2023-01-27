@@ -1,0 +1,40 @@
+spring:
+    application:
+        name: MicroService1
+    datasource:
+        driver-class-name: org.postgresql.Driver
+        password: admin
+        url: jdbc:postgresql://dbpostgresql:5432/postgres
+        username: postgres
+    jpa:
+        database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+        hibernate:
+            ddl-auto: create
+        properties:
+            hibernate:
+                temp:
+                    use_jdbc_metadata_defaults: false
+    security:
+        oauth2:
+            client:
+                registration:
+                    google:
+                        client-id: 220700435139-dkcp03633i6unre49ubalkamq2mipfci.apps.googleusercontent.com
+                        client-secret: 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
+        user:
+            name: admin
+            password: admin
+
+jwt:
+    expiration: 3600000
+    secret: aksjdhakjshdaksjdh
+secretPsw: asdjahsdkajsdakjsdh
+server:
+    port: 8081
+
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://eureka-server:8761/eureka
+    instance:
+        preferIpAddress: true

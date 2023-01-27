@@ -14,8 +14,8 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="api-gateway" target="11" />
-      <module name="diyamonds" target="1.8" />
-      <module name="diyamonds2" target="1.8" />
+      <module name="diyamonds" target="11" />
+      <module name="diyamonds2" target="11" />
       <module name="Diyamonds_TAASS" target="1.7" />
       <module name="eureka-server" target="11" />
     </bytecodeTargetLevel>

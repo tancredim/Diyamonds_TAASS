@@ -1,7 +1,6 @@
-FROM openjdk:13-alpine
-RUN addgroup -S spring && adduser -S spring -G spring
+FROM adoptopenjdk/openjdk11
 VOLUME /tmp
-EXPOSE 8082
 ARG DEPENDENCY=target
 ADD ${DEPENDENCY}/*.jar diyamonds_backend_2.jar
+COPY target/diyamonds_backend_2.jar diyamonds_backend_2.jar
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/diyamonds_backend_2.jar"]

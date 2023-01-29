@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';  // <<<< import it here
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';  // <<<< import it here
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -27,6 +27,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListaAnnunciComponent } from './listaAnnunci/listaAnnunci.component';
 import {AnnuncioComponent} from "./annuncio/annuncio.component";
+import {CreazioneAnnuncioComponent} from "./creazioneAnnuncio/creazioneAnnuncio.component";
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {AnnuncioComponent} from "./annuncio/annuncio.component";
     RegistratiComponent,
     RegistrazioneCompletataComponent,
     ListaAnnunciComponent,
-    AnnuncioComponent
+    AnnuncioComponent,
+    CreazioneAnnuncioComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ import {AnnuncioComponent} from "./annuncio/annuncio.component";
     MatListModule,
     MatTabsModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule
   ],
   providers: [
     {

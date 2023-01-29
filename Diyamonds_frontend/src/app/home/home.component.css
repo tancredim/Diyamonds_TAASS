@@ -1,0 +1,30 @@
+
+.InserisciAnnuncio{
+  align-items: center;
+  background-color: #ffd3d9;
+  border: 1px solid;
+  border-color: #ffd3d9;
+  color: #f9423a;
+  display: flex;
+  height: 40px;
+  width: 194px;
+  padding: 0;
+  border-radius: 7px;
+}
+.InserisciAnnuncio:hover{
+  border-color: red;
+  cursor: pointer;
+}
+
+
+.index-module_sbt-text-atom__ed5J9{
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+.filter-green{
+  fill:  #f9423a;
+}
+

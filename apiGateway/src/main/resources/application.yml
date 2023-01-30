@@ -4,6 +4,31 @@ server:
 spring:
   application:
     name: gatewayService
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+      routes:
+        - id: diyamonds_backend_1
+          uri: lb://DIYAMONDS_BACKEND_1
+          predicates:
+            - Path=/api/v1/ms1/**
+          filters:
+            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+        - id: diyamonds_backend_2
+          uri: lb://DIYAMONDS_BACKEND_2
+          predicates:
+            - Path=/api/v1/ms2/**
+          filters:
+            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
 
 eureka:
   client:

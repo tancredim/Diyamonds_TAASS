@@ -20,30 +20,61 @@ services:
       restart: unless-stopped
   app:
     build: ./diyamonds_backend_1
-    image: appbootrest
     container_name: diyamonds_backend_1
     ports:
       - "8081:8081"
     depends_on:
       - dbpostgresql
+      - eureka-server
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://dbpostgresql:5432/postgres
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=admin
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-  rabbitmq3:
-    container_name: rabbitmq
-    image: rabbitmq:3.8-management-alpine
-    environment:
-      - RABBITMQ_DEFAULT_USER=admin
-      - RABBITMQ_DEFAULT_PASS=admin
+  dbpostgresql2:
+    container_name: postgres_2
+    image: "postgres"
     ports:
+      - "5433:5432"
+    volumes:
+      - db-data2:/var/lib/postgresql/data
+    depends_on:
+      - app
+      - dbpostgresql
+      - eureka-server
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      restart: unless-stopped
+  app2:
+    build: ./diyamonds_backend_2
+    container_name: diyamonds_backend_2
+    ports:
+      - "8082:8082"
+    depends_on:
+      - app
+      - dbpostgresql
+      - dbpostgresql2
+      - eureka-server
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://dbpostgresql2:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=admin
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    #rabbitmq3:
+    #container_name: rabbitmq
+    #image: rabbitmq:3.8-management-alpine
+      #environment:
+      #- RABBITMQ_DEFAULT_USER=admin
+      #- RABBITMQ_DEFAULT_PASS=admin
+      #ports:
       # AMQP protocol port
-      - "5672:5672"
+      #- "5672:5672"
       # HTTP management UI
-      - "15672:15672"
-    networks:
-      - rabbitmq
+      #- "15672:15672"
+      #networks:
+      #- rabbitmq
   api-gateway:
     build: apiGateway
     container_name: api-gateway
@@ -51,11 +82,6 @@ services:
       - "8083:8083"
     depends_on:
       - eureka-server
-  ui:
-    build: .\Diyamonds_frontend
-    container_name: diyamonds_frontend
-    ports:
-      - "4200:80"
 volumes:
   db-data:
   db-data2:

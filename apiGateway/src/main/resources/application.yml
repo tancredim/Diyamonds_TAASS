@@ -11,14 +11,14 @@ spring:
           enabled: true
           lowerCaseServiceId: true
       routes:
-        - id: diyamonds_backend_1
-          uri: lb://DIYAMONDS_BACKEND_1
+        - id: microService1
+          uri: lb://microService1
           predicates:
             - Path=/api/v1/ms1/**
           filters:
             - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
-        - id: diyamonds_backend_2
-          uri: lb://DIYAMONDS_BACKEND_2
+        - id: microService2
+          uri: lb://microService2
           predicates:
             - Path=/api/v1/ms2/**
           filters:

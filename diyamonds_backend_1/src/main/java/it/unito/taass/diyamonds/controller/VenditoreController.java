@@ -4,6 +4,11 @@ import it.unito.taass.diyamonds.model.AnnuncioGioiello;
 import it.unito.taass.diyamonds.model.Venditore;
 import it.unito.taass.diyamonds.repo.AnnuncioGioielloRepository;
 import it.unito.taass.diyamonds.repo.VenditoreRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.amqp.rabbit.annotation.RabbitListenerConfigurer;
+import org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistrar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +21,7 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/v1/ms1")
-public class VenditoreController {
+public class VenditoreController implements RabbitListenerConfigurer {
 
     @Autowired
     VenditoreRepository venditoreRepository;
@@ -32,13 +37,13 @@ public class VenditoreController {
     }
 
     @PostMapping("/venditori/{id}/creaAnnuncioGioiello")
-    public AnnuncioGioiello addAnnuncioGioiello(@PathVariable("id") long id, @RequestBody AnnuncioGioiello annuncioGioiello) {
+    public AnnuncioGioiello addAnnuncioGioiello(AnnuncioGioiello annuncioGioiello) {
         System.out.println("Creazione Annuncio Gioiello");
-        Optional<Venditore> v = venditoreRepository.findById(id);
+
+        Optional<Venditore> v = venditoreRepository.findById(annuncioGioiello.getIdVenditore());
         Venditore venditore = v.get();
-        annuncioGioiello.setIdVenditore(id);
         venditore.getAnnunciGioelli().add(annuncioGioiello);
-        annuncioGioielloRepository.save(annuncioGioiello);
+
         venditoreRepository.save(venditore);
         return annuncioGioiello;
     }
@@ -56,4 +61,22 @@ public class VenditoreController {
         venditoreRepository.deleteAll();
         return new ResponseEntity<>("All Venditori have been deleted!", HttpStatus.OK);
     }
+
+
+
+    @Override
+    public void configureRabbitListeners(RabbitListenerEndpointRegistrar rabbitListenerEndpointRegistrar) {
+    }
+
+    @RabbitListener(queues = "${spring.rabbitmq.queue}")
+    public void receivedMessage(AnnuncioGioiello annuncioGioiello) {
+        System.out.println("Message Received is.. " + annuncioGioiello.toString());
+        Optional<Venditore> v = venditoreRepository.findById(annuncioGioiello.getIdVenditore());
+        Venditore venditore = v.get();
+        venditore.getAnnunciGioelli().add(annuncioGioiello);
+
+        venditoreRepository.save(venditore);
+
+    }
+
 }

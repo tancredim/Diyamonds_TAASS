@@ -62,19 +62,14 @@ services:
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=admin
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-    #rabbitmq3:
-    #container_name: rabbitmq
-    #image: rabbitmq:3.8-management-alpine
-      #environment:
-      #- RABBITMQ_DEFAULT_USER=admin
-      #- RABBITMQ_DEFAULT_PASS=admin
-      #ports:
-      # AMQP protocol port
-      #- "5672:5672"
-      # HTTP management UI
-      #- "15672:15672"
-      #networks:
-      #- rabbitmq
+  rabbitmq3:
+    container_name: rabbitmq
+    image: rabbitmq:3.8-management-alpine
+    ports:
+       #AMQP protocol port
+      - "5672:5672"
+       #HTTP management UI
+      - "15672:15672"
   api-gateway:
     build: apiGateway
     container_name: api-gateway
@@ -85,8 +80,6 @@ services:
 volumes:
   db-data:
   db-data2:
-networks:
-  rabbitmq:
-    driver: bridge
+
 # docker-compose build && docker-compose up
 

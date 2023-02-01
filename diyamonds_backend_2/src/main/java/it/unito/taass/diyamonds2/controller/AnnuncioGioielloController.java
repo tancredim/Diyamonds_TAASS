@@ -1,15 +1,14 @@
 package it.unito.taass.diyamonds2.controller;
 
 import it.unito.taass.diyamonds2.model.AnnuncioGioiello;
+import it.unito.taass.diyamonds2.mq.Sender;
 import it.unito.taass.diyamonds2.repo.AnnuncioGioielloRepository;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -18,6 +17,14 @@ public class AnnuncioGioielloController {
 
     @Autowired
     AnnuncioGioielloRepository annuncioGioielloRepository;
+
+    private Sender rabbitMqSender;
+    @Autowired
+    public AnnuncioGioielloController(Sender rabbitMqSender) {
+        this.rabbitMqSender = rabbitMqSender;
+    }
+
+
 
     @GetMapping("/annunciGioielli")
     public List<AnnuncioGioiello> getAllAnnunciGioielli() {
@@ -39,6 +46,13 @@ public class AnnuncioGioielloController {
     public AnnuncioGioiello addAnnuncioGioiello(@RequestBody AnnuncioGioiello annuncioGioiello) {
         System.out.println("Creazione Annuncio Gioiello");
         annuncioGioielloRepository.save(annuncioGioiello);
+
+        rabbitMqSender.send(annuncioGioiello);
+
         return annuncioGioiello;
     }
+
+
+
+
 }

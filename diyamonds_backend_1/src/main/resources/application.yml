@@ -24,6 +24,14 @@ spring:
         user:
             name: admin
             password: admin
+    rabbitmq:
+        host: rabbitmq
+        password: guest
+        port: 15672
+        username: guest
+        exchange: user.exchange
+        queue: user.queue
+        routingkey: user.routingkey
 
 jwt:
     expiration: 3600000

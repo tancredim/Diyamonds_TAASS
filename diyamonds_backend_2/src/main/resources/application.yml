@@ -22,3 +22,11 @@ spring:
             hibernate:
                 temp:
                     use_jdbc_metadata_defaults: false
+    rabbitmq:
+        host: rabbitmq
+        password: guest
+        port: 15672
+        username: guest
+        exchange: user.exchange
+        queue: user.queue
+        routingkey: user.routingkey

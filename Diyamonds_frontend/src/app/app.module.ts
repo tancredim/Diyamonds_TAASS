@@ -16,7 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RegistratiComponent } from './registrati/registrati.component';
 import { RegistrazioneCompletataComponent } from './registrazione-completata/registrazione-completata.component';
-
+import { CarouselModule } from '@coreui/angular';
 import { MatSelectModule} from '@angular/material/select';
 import{MatFormFieldModule} from '@angular/material/form-field';
 import{MatInputModule} from '@angular/material/input';
@@ -56,6 +56,7 @@ import {CreazioneAnnuncioComponent} from "./creazioneAnnuncio/creazioneAnnuncio.
     MatCardModule,
     MatButtonModule,
     ReactiveFormsModule,
+    CarouselModule,
     ToastrModule.forRoot()
   ],
   providers: [

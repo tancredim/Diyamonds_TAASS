@@ -1,25 +1,58 @@
 <app-menu></app-menu>
-<br><br>
-<mat-card>
-    <form class="example-form" align="center">
-        <mat-form-field class="example-full-width">
-          <mat-label>Cosa cerchi ?</mat-label>
-          <input matInput placeholder="Ex. Gioiello">
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>In quale categoria?</mat-label>
-            <mat-select>
-                <mat-option value="gioiello">Gioiello</mat-option>
-                <mat-option value="materiaPrima">Materia Prima</mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-            <mat-label>Dove ?</mat-label>
-            <input matInput placeholder="Ex. Torino">
-          </mat-form-field>
-        <button (click) = "CercaAnnuncio()"
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-          mat-button color="primary">Cerca</button>
+<div class ="HomeContainer">
+  <br><br>
+
+
+
+
+
+  <div class=" w3-container w3-content w3-center w3-padding-8" style="max-width:800px">
+
+  <h2 class="w3-wide" >Welcome in Diyamonds Homepage ! </h2>
+
+
+  <c-carousel  class ="carousel-container">
+
+    <c-carousel-inner class="carousel-inner">
+      <c-carousel-item class ="carosul-item" *ngFor="let slide of slides">
+        <img class ="carousel-img"
+             [src]="slide.src"
+             loading="lazy"
+        />
+
+        <c-carousel-caption class="carousel-tile d-none d-md-block">
+          <h3>{{slide.title}}</h3>
+
+        </c-carousel-caption>
+
+      </c-carousel-item>
+    </c-carousel-inner>
+    <c-carousel-control [routerLink] caption="Previous" direction="prev"></c-carousel-control>
+    <c-carousel-control [routerLink] caption="Next" direction="next"></c-carousel-control>
+  </c-carousel>
+
+  <br><br>
+  <mat-card>
+    <form class="example-form" align="center">
+      <mat-form-field class="example-full-width">
+        <mat-label>Cosa cerchi ?</mat-label>
+        <input matInput placeholder="Ex. Gioiello">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>In quale categoria?</mat-label>
+        <mat-select>
+          <mat-option value="gioiello">Gioiello</mat-option>
+          <mat-option value="materiaPrima">Materia Prima</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Dove ?</mat-label>
+        <input matInput placeholder="Ex. Torino">
+      </mat-form-field>
+      <button (click) = "CercaAnnuncio()" mat-button color="primary">Cerca</button>
 
 
     </form>
@@ -36,46 +69,78 @@
       <span class="index-module_sbt-text-atom__ed5J9 index-module_token-button__eMeQT size-normal index-module_weight-semibold__MWtJJ">Inserisci annuncio</span>
 
     </div>
-</mat-card>
-<mat-divider></mat-divider>
-<mat-card>
+
+
+  </mat-card>
+  <mat-divider></mat-divider>
+  <mat-card>
     <h2 align="center"> Esplora le nostre sezioni</h2>
     <mat-tab-group>
-        <mat-tab label="TabGioiello">
-            <mat-action-list>
-                <button mat-list-item  *ngFor ="let gioiello of gioielli"> {{gioiello.viewValue}}</button>
-            </mat-action-list>
-        </mat-tab>
-        <mat-tab label="TabMateriaPrima">
-            <mat-action-list>
-                <button mat-list-item *ngFor ="let matPrima of materiaPrima"> {{matPrima.viewValue}}</button>
+      <mat-tab label="TabGioiello">
+        <mat-action-list>
+          <button mat-list-item  *ngFor ="let gioiello of gioielli"> {{gioiello.viewValue}}</button>
+        </mat-action-list>
+      </mat-tab>
+      <mat-tab label="TabMateriaPrima">
+        <mat-action-list>
+          <button mat-list-item *ngFor ="let matPrima of materiaPrima"> {{matPrima.viewValue}}</button>
 
-            </mat-action-list>
-        </mat-tab>
-      </mat-tab-group>
+        </mat-action-list>
+      </mat-tab>
+    </mat-tab-group>
 
-</mat-card>
+  </mat-card>
 
 
-<div class="container pb-5 mt-n2 mt-md-n3">
-  <div class="row">
-    <div class="col-xl-9 col-md-8">
+  <div class="container pb-5 mt-n2 mt-md-n3">
+    <div class="row">
+      <div class="col-xl-9 col-md-8">
 
-      <!-- Item-->
-      <div class="d-sm-flex justify-content-between my-4 pb-4 border-bottom" *ngFor = "let annuncio of annunci">
-        <div class="media d-block d-sm-flex text-center text-sm-left">
-          <a a routerLink="/annuncio/{{annuncio.id}}" class="cart-item-thumb mx-auto mr-sm-4" ><img src="/assets/images/gioiello1.jpg" alt="Product"></a>
-          <div class="media-body pt-3">
-            <h3 class="product-card-title font-weight-semibold border-0 pb-0"><a routerLink="/annuncio/{{annuncio.id}}">{{ annuncio.gioiello }}</a></h3>
-            <div class="font-size-sm"><span class="text-muted mr-2">Descrizione: </span>  {{ annuncio.descrizione }}</div>
-            <div class="font-size-lg text-primary pt-2">{{ annuncio.prezzo }} € </div>
+        <!-- Item-->
+        <div class="d-sm-flex justify-content-between my-4 pb-4 border-bottom" *ngFor = "let annuncio of annunci">
+          <div class="media d-block d-sm-flex text-center text-sm-left">
+            <a a routerLink="/annuncio/{{annuncio.id}}" class="cart-item-thumb mx-auto mr-sm-4" ><img src="/assets/images/gioiello1.jpg" alt="Product"></a>
+            <div class="media-body pt-3">
+              <h3 class="product-card-title font-weight-semibold border-0 pb-0"><a routerLink="/annuncio/{{annuncio.id}}">{{ annuncio.gioiello }}</a></h3>
+              <div class="font-size-sm"><span class="text-muted mr-2">Descrizione: </span>  {{ annuncio.descrizione }}</div>
+              <div class="font-size-lg text-primary pt-2">{{ annuncio.prezzo }} € </div>
+            </div>
           </div>
+
         </div>
 
       </div>
+      <!-- Sidebar-->
 
     </div>
-    <!-- Sidebar-->
-
   </div>
+
 </div>
+
+
+
+
+
+<br><br>
+
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-dark-gray w3-xlarge">
+  <i class="fa fa-facebook-official w3-hover-opacity"></i>
+  <i class="fa fa-instagram w3-hover-opacity"></i>
+  <i class="fa fa-snapchat w3-hover-opacity"></i>
+  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+  <i class="fa fa-twitter w3-hover-opacity"></i>
+  <i class="fa fa-linkedin w3-hover-opacity"></i>
+  <p class="w3-medium"> Diyamonds </p>
+</footer>
+
+
+
+
+
+
+
+
+

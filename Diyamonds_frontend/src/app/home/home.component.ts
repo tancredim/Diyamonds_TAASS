@@ -30,8 +30,9 @@ export class HomeComponent implements OnInit{
   private user2!: User;
   annunci?: ListaAnnunci[];
 
+  public slides: any[] = new Array(3).fill({id: -1, src: '', title: '', subtitle: ''});
 
-  private URLGetAnnunci : string = "http://localhost:8081/api/v1/annunciGioielli";
+  private URLGetAnnunci : string = "http://localhost:8083/api/v1/ms2/annunciGioielli";
 
   constructor(
     private router: Router,
@@ -46,6 +47,19 @@ export class HomeComponent implements OnInit{
       this.user2 = history.state.user2;
       console.log(this.user2);
     });
+
+    this.slides[0] = {
+      src: './assets/images/CollaneOro.jpg',
+      title: "Collane in oro"
+    };
+    this.slides[1] = {
+      src: './assets/images/GioielliArtigianali.jpg',
+      title: "Gioielli artigianali di prima qualita"
+    }
+    this.slides[2] = {
+      src: './assets/images/Smeraldi.jpg',
+      title: "Pietre raffinate artigianali"
+    }
   }
   gioielli: Gioiello[] = [
     {value: 'bracciale', viewValue: 'Bracciale'},
@@ -67,9 +81,11 @@ export class HomeComponent implements OnInit{
 
   }
 
+
   getUserList(): Observable<ListaAnnunci[]>{
     return this.httpClient.get<ListaAnnunci[]>(this.URLGetAnnunci);
   }
+
 
 
 }

@@ -22,13 +22,14 @@ export class CreazioneAnnuncioComponent {
   form: FormGroup;
 
 
-  private baseURL = "http://localhost:8081/api/v1/venditori/2/creaAnnuncioGioiello";
+  private baseURL = "http://localhost:8083/api/v1/ms2/annunciGioielli/creaAnnuncioGioiello";
 
   constructor(public fb: FormBuilder, private route: ActivatedRoute, private httpClient: HttpClient,
               private toastr: ToastrService) {
 
 
     this.form= this.fb.group({
+      idVenditore : 2,
       descrizione: new FormControl('', [Validators.required]),
       gioiello: new FormControl('', [Validators.required]),
       prezzo:  new FormControl('', [Validators.required])

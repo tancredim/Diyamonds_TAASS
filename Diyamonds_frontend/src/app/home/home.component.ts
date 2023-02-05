@@ -2,6 +2,9 @@ import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../user';
+import {ListaAnnunci} from "../listaAnnunci";
+import {Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
 
 
 export interface Gioiello {
@@ -25,10 +28,15 @@ export class HomeComponent implements OnInit{
   private user!: SocialUser;
   private userString!: string;
   private user2!: User;
+  annunci?: ListaAnnunci[];
+
+
+  private URLGetAnnunci : string = "http://localhost:8081/api/v1/annunciGioielli";
 
   constructor(
     private router: Router,
-    private authService: SocialAuthService
+    private authService: SocialAuthService,
+    private httpClient: HttpClient
   ) {}
 
   ngOnInit() {
@@ -50,4 +58,21 @@ export class HomeComponent implements OnInit{
     {value: 'bronzo', viewValue: 'Bronzo'}
   ];
 
+  CercaAnnuncio(){
+
+    this.getUserList().subscribe(data =>{
+      this.annunci = data;
+
+    });
+
+  }
+
+  getUserList(): Observable<ListaAnnunci[]>{
+    return this.httpClient.get<ListaAnnunci[]>(this.URLGetAnnunci);
+  }
+
+
 }
+
+
+

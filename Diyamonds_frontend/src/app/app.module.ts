@@ -4,7 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';  // <<<< import
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { ToastrModule } from 'ngx-toastr';
 //social login
 
 import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
@@ -55,7 +55,8 @@ import {CreazioneAnnuncioComponent} from "./creazioneAnnuncio/creazioneAnnuncio.
     MatTabsModule,
     MatCardModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     {

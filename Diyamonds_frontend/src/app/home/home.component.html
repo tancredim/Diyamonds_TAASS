@@ -3,7 +3,7 @@
 <mat-card>
     <form class="example-form" align="center">
         <mat-form-field class="example-full-width">
-          <mat-label>Cosa cerchis?</mat-label>
+          <mat-label>Cosa cerchi ?</mat-label>
           <input matInput placeholder="Ex. Gioiello">
         </mat-form-field>
         <mat-form-field appearance="fill">
@@ -14,10 +14,12 @@
             </mat-select>
         </mat-form-field>
         <mat-form-field class="example-full-width">
-            <mat-label>Doveasd?</mat-label>
+            <mat-label>Dove ?</mat-label>
             <input matInput placeholder="Ex. Torino">
           </mat-form-field>
-        <button mat-button color="primary">Cerca</button>
+        <button (click) = "CercaAnnuncio()"
+
+          mat-button color="primary">Cerca</button>
 
 
     </form>
@@ -53,3 +55,27 @@
       </mat-tab-group>
 
 </mat-card>
+
+
+<div class="container pb-5 mt-n2 mt-md-n3">
+  <div class="row">
+    <div class="col-xl-9 col-md-8">
+
+      <!-- Item-->
+      <div class="d-sm-flex justify-content-between my-4 pb-4 border-bottom" *ngFor = "let annuncio of annunci">
+        <div class="media d-block d-sm-flex text-center text-sm-left">
+          <a a routerLink="/annuncio/{{annuncio.id}}" class="cart-item-thumb mx-auto mr-sm-4" ><img src="/assets/images/gioiello1.jpg" alt="Product"></a>
+          <div class="media-body pt-3">
+            <h3 class="product-card-title font-weight-semibold border-0 pb-0"><a routerLink="/annuncio/{{annuncio.id}}">{{ annuncio.gioiello }}</a></h3>
+            <div class="font-size-sm"><span class="text-muted mr-2">Descrizione: </span>  {{ annuncio.descrizione }}</div>
+            <div class="font-size-lg text-primary pt-2">{{ annuncio.prezzo }} € </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- Sidebar-->
+
+  </div>
+</div>

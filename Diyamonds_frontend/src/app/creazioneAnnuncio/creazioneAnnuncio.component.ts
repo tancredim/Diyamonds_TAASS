@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AnnuncioService } from '../annuncio.service';
 import {Annuncio} from "../annuncio";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import * as Console from "console";
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-creazioneAnnuncio',
@@ -18,12 +18,14 @@ export class CreazioneAnnuncioComponent {
   annuncio?: Annuncio;
 
 
+
   form: FormGroup;
 
 
   private baseURL = "http://localhost:8081/api/v1/venditori/2/creaAnnuncioGioiello";
 
-  constructor(public fb: FormBuilder, private route: ActivatedRoute, private httpClient: HttpClient) {
+  constructor(public fb: FormBuilder, private route: ActivatedRoute, private httpClient: HttpClient,
+              private toastr: ToastrService) {
 
 
     this.form= this.fb.group({
@@ -31,6 +33,7 @@ export class CreazioneAnnuncioComponent {
       gioiello: new FormControl('', [Validators.required]),
       prezzo:  new FormControl('', [Validators.required])
     })
+
 
 
 
@@ -43,45 +46,57 @@ export class CreazioneAnnuncioComponent {
 */
   }
 
-
-
+message : boolean = false;
+messageFailure : boolean = false;
 
   creaAnnuncio(inputs: {gioiello:string , prezzo:number, descrizione:string}){
 
+  this.messageFailure = false;
+  this.message = false;
 
-    /*
-    var formData: any = new FormData();
-    // @ts-ignore
-    formData.append('gioiello', this.gioiello);
-    // @ts-ignore
-    formData.append('prezzo', Number(this.prezzo));
-    // @ts-ignore
-    formData.append('descrizione', this.descrizione);
-*/
 
-    /*
-    var prezzoResult = Number(this.prezzo);
-    var form = this.fb.group({
-      descrizione: this.descrizione,
-      gioiello: this.gioiello,
-      prezzo: prezzoResult,
-    });
-  */
-    inputs.prezzo = Number(inputs.prezzo);
-    console.log(inputs);
+
+    // @ts-ignore
+    console.log(this.form.get('descrizione').value);
+    // @ts-ignore
+    console.log(this.form.get('gioiello').value);
+
+    // @ts-ignore
+    console.log(Number(this.form.get('prezzo').value));
+
+
 
     this.httpClient
-      .post(this.baseURL, inputs)
+      .post(this.baseURL, this.form.value)
       .subscribe({
-        next: (response) => console.log(response),
-        error: (error) => console.log(error),
+
+        next: (response) =>
+        {
+          this.message= true,
+          this.form.reset();
+        },
+
+        error: (error) =>{
+          this.messageFailure = true;
+          this.form.reset();
+        } ,
       });
 
 
 
-    //return this.httpClient.post<Annuncio>(this.baseURL);
+
 
   }
+  removeMessage(){
+    this.message = false;
+  }
+
+  removeMessageFailure(){
+    this.messageFailure = false;
+  }
+
+
+
 }
 
 

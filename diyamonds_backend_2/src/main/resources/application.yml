@@ -8,7 +8,7 @@ server:
     port: 8082
 spring:
     application:
-      name: MicroService2
+      name: microService2
     datasource:
         driver-class-name: org.postgresql.Driver
         password: admin
@@ -22,3 +22,11 @@ spring:
             hibernate:
                 temp:
                     use_jdbc_metadata_defaults: false
+    rabbitmq:
+        host: rabbitmq
+        password: guest
+        port: 15672
+        username: guest
+        exchange: user.exchange
+        queue: user.queue
+        routingkey: user.routingkey

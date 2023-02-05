@@ -1,4 +1,5 @@
 FROM adoptopenjdk/openjdk11
+EXPOSE 8082
 VOLUME /tmp
 ARG DEPENDENCY=target
 ADD ${DEPENDENCY}/*.jar diyamonds_backend_2.jar

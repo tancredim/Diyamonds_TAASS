@@ -28,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListaAnnunciComponent } from './listaAnnunci/listaAnnunci.component';
 import {AnnuncioComponent} from "./annuncio/annuncio.component";
 import {CreazioneAnnuncioComponent} from "./creazioneAnnuncio/creazioneAnnuncio.component";
+import {SearchFilterPipe} from "./home/search-filter.pipe";
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {CreazioneAnnuncioComponent} from "./creazioneAnnuncio/creazioneAnnuncio.
     RegistrazioneCompletataComponent,
     ListaAnnunciComponent,
     AnnuncioComponent,
-    CreazioneAnnuncioComponent
+    CreazioneAnnuncioComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,

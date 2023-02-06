@@ -39,7 +39,8 @@
     <form class="example-form" align="center">
       <mat-form-field class="example-full-width">
         <mat-label>Cosa cerchi ?</mat-label>
-        <input matInput placeholder="Ex. Gioiello">
+        <input matInput placeholder="Ex. Gioiello" [(ngModel)]="searchTerm"
+               [ngModelOptions]=" {standalone: true}" (input)="search(searchTerm)">
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>In quale categoria?</mat-label>
@@ -97,7 +98,8 @@
       <div class="col-xl-9 col-md-8">
 
         <!-- Item-->
-        <div class="d-sm-flex justify-content-between my-4 pb-4 border-bottom" *ngFor = "let annuncio of annunci">
+        <div class="d-sm-flex justify-content-between my-4 pb-4 border-bottom"
+             *ngFor = "let annuncio of annunci | searchFilter: searchTerm">
           <div class="media d-block d-sm-flex text-center text-sm-left">
             <a a routerLink="/annuncio/{{annuncio.id}}" class="cart-item-thumb mx-auto mr-sm-4" ><img src="/assets/images/gioiello1.jpg" alt="Product"></a>
             <div class="media-body pt-3">

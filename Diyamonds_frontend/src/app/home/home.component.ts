@@ -28,7 +28,9 @@ export class HomeComponent implements OnInit{
   private user!: SocialUser;
   private userString!: string;
   private user2!: User;
-  annunci?: ListaAnnunci[];
+  searchTerm = '';
+  annunci: ListaAnnunci[] =[];
+  annunciFiltered?: ListaAnnunci[];
 
   public slides: any[] = new Array(3).fill({id: -1, src: '', title: '', subtitle: ''});
 
@@ -78,6 +80,13 @@ export class HomeComponent implements OnInit{
       this.annunci = data;
 
     });
+
+  }
+
+  search(value: string): void {
+    this.annunciFiltered = this.annunci?.filter((val) =>
+      val.gioiello?.toLowerCase().includes(value)
+    );
 
   }
 

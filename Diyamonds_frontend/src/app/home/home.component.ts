@@ -62,6 +62,8 @@ export class HomeComponent implements OnInit{
       src: './assets/images/Smeraldi.jpg',
       title: "Pietre raffinate artigianali"
     }
+
+    this.CercaAnnuncio()
   }
   gioielli: Gioiello[] = [
     {value: 'bracciale', viewValue: 'Bracciale'},
@@ -85,7 +87,7 @@ export class HomeComponent implements OnInit{
 
   search(value: string): void {
     this.annunciFiltered = this.annunci?.filter((val) =>
-      val.gioiello?.toLowerCase().includes(value)
+      val.gioiello?.toLowerCase().includes(value.toLowerCase())
     );
 
   }

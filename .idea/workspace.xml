@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="158c2449-9bec-4cce-9ddb-a8efa423ce32" name="Changes" comment="maxi commit speriamo bene">
-      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/home/search-filter.pipe.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/src/app/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/home/home.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/src/app/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/home/home.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/src/app/home/search-filter.pipe.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/home/search-filter.pipe.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +163,8 @@
       <workItem from="1675608080071" duration="3296000" />
       <workItem from="1675611435936" duration="506000" />
       <workItem from="1675611961277" duration="6696000" />
-      <workItem from="1675709436731" duration="3203000" />
+      <workItem from="1675709436731" duration="3322000" />
+      <workItem from="1675795759057" duration="2938000" />
     </task>
     <task id="LOCAL-00001" summary="maxi commit speriamo bene">
       <created>1674136468595</created>

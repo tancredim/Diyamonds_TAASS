@@ -40,7 +40,7 @@
       <mat-form-field class="example-full-width">
         <mat-label>Cosa cerchi ?</mat-label>
         <input matInput placeholder="Ex. Gioiello" [(ngModel)]="searchTerm"
-               [ngModelOptions]=" {standalone: true}" (input)="search(searchTerm)">
+               [ngModelOptions]=" {standalone: true}">
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>In quale categoria?</mat-label>
@@ -53,7 +53,7 @@
         <mat-label>Dove ?</mat-label>
         <input matInput placeholder="Ex. Torino">
       </mat-form-field>
-      <button (click) = "CercaAnnuncio()" mat-button color="primary">Cerca</button>
+      <button (click) = "search(searchTerm)" mat-button color="primary">Cerca</button>
 
 
     </form>
@@ -79,7 +79,8 @@
     <mat-tab-group>
       <mat-tab label="TabGioiello">
         <mat-action-list>
-          <button mat-list-item  *ngFor ="let gioiello of gioielli"> {{gioiello.viewValue}}</button>
+          <button  (click) = "search(gioiello.value)" mat-list-item  *ngFor ="let gioiello of gioielli"> {{gioiello.viewValue}}
+            </button>
         </mat-action-list>
       </mat-tab>
       <mat-tab label="TabMateriaPrima">
@@ -99,7 +100,7 @@
 
         <!-- Item-->
         <div class="d-sm-flex justify-content-between my-4 pb-4 border-bottom"
-             *ngFor = "let annuncio of annunci | searchFilter: searchTerm">
+             *ngFor = "let annuncio of annunciFiltered ">
           <div class="media d-block d-sm-flex text-center text-sm-left">
             <a a routerLink="/annuncio/{{annuncio.id}}" class="cart-item-thumb mx-auto mr-sm-4" ><img src="/assets/images/gioiello1.jpg" alt="Product"></a>
             <div class="media-body pt-3">

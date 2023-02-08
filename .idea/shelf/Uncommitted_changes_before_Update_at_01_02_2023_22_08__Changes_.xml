@@ -1,0 +1,14 @@
+<changelist name="Uncommitted_changes_before_Update_at_01_02_2023_22_08_[Changes]" date="1675888587775" recycled="false" toDelete="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_02_2023_22_08_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 01/02/2023 22:08 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="diyamonds_backend_1/target/diyamonds_backend_1.jar" />
+    <option name="AFTER_PATH" value="diyamonds_backend_1/target/diyamonds_backend_1.jar" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_02_2023_22_08_[Changes]/diyamonds_backend_1.jar" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="diyamonds_backend_1/target/diyamonds_backend_1.jar.original" />
+    <option name="AFTER_PATH" value="diyamonds_backend_1/target/diyamonds_backend_1.jar.original" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_02_2023_22_08_[Changes]/diyamonds_backend_1.jar.original" />
+  </binary>
+</changelist>

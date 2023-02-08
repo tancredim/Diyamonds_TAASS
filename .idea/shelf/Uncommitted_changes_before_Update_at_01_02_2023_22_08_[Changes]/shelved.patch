@@ -1,0 +1,576 @@
+Index: diyamonds_backend_1/src/main/resources/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>spring:\r\n    application:\r\n        name: microService1\r\n    datasource:\r\n        driver-class-name: org.postgresql.Driver\r\n        password: admin\r\n        url: jdbc:postgresql://dbpostgresql:5432/postgres\r\n        username: postgres\r\n    jpa:\r\n        database-platform: org.hibernate.dialect.PostgreSQL9Dialect\r\n        hibernate:\r\n            ddl-auto: create\r\n        properties:\r\n            hibernate:\r\n                temp:\r\n                    use_jdbc_metadata_defaults: false\r\n    security:\r\n        oauth2:\r\n            client:\r\n                registration:\r\n                    google:\r\n                        client-id: 220700435139-dkcp03633i6unre49ubalkamq2mipfci.apps.googleusercontent.com\r\n                        client-secret: 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\r\n        user:\r\n            name: admin\r\n            password: admin\r\n\r\njwt:\r\n    expiration: 3600000\r\n    secret: aksjdhakjshdaksjdh\r\nsecretPsw: asdjahsdkajsdakjsdh\r\nserver:\r\n    port: 8081\r\n\r\neureka:\r\n    client:\r\n        serviceUrl:\r\n            defaultZone: http://eureka-server:8761/eureka\r\n    instance:\r\n        preferIpAddress: true
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/diyamonds_backend_1/src/main/resources/application.yml b/diyamonds_backend_1/src/main/resources/application.yml
+--- a/diyamonds_backend_1/src/main/resources/application.yml	(revision c4bf9b5af6ffbc304baca183d4a50f796f0b4936)
++++ b/diyamonds_backend_1/src/main/resources/application.yml	(date 1675277410061)
+@@ -14,6 +14,14 @@
+             hibernate:
+                 temp:
+                     use_jdbc_metadata_defaults: false
++    rabbitmq:
++        host: rabbitmq
++        password: guest
++        port: 15672
++        username: guest
++        exchange: user.exchange
++        queue: user.queue
++        routingkey: user.routingkey
+     security:
+         oauth2:
+             client:
+Index: diyamonds_backend_2/src/main/java/it/unito/taass/diyamonds2/controller/AnnuncioGioielloController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package it.unito.taass.diyamonds2.controller;\r\n\r\nimport it.unito.taass.diyamonds2.model.AnnuncioGioiello;\r\nimport it.unito.taass.diyamonds2.repo.AnnuncioGioielloRepository;\r\nimport org.springframework.amqp.rabbit.core.RabbitTemplate;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.web.bind.annotation.*;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\nimport java.util.Optional;\r\n\r\n\r\n@CrossOrigin(origins = \"http://localhost:4200\")\r\n@RestController\r\n@RequestMapping(\"/api/v1/ms2\")\r\npublic class AnnuncioGioielloController {\r\n\r\n    @Autowired\r\n    AnnuncioGioielloRepository annuncioGioielloRepository;\r\n\r\n    @GetMapping(\"/annunciGioielli\")\r\n    public List<AnnuncioGioiello> getAllAnnunciGioielli() {\r\n        System.out.println(\"Get all Annunci Gioielli\");\r\n        List<AnnuncioGioiello> annunciGioielli = new ArrayList<>();\r\n        annuncioGioielloRepository.findAll().forEach(annunciGioielli::add);\r\n        return annunciGioielli;\r\n    }\r\n\r\n\r\n    @GetMapping(\"/annunciGioielli/{idAnnuncioGioiello}\")\r\n    public AnnuncioGioiello getAnnuncioById(@PathVariable(\"idAnnuncioGioiello\") long id) {\r\n        Optional<AnnuncioGioiello> ag = annuncioGioielloRepository.findById(id);\r\n        AnnuncioGioiello annuncioGioiello = ag.get();\r\n        return annuncioGioiello;\r\n    }\r\n\r\n    @PostMapping(\"/annunciGioielli/creaAnnuncioGioiello\")\r\n    public AnnuncioGioiello addAnnuncioGioiello(@RequestBody AnnuncioGioiello annuncioGioiello) {\r\n        System.out.println(\"Creazione Annuncio Gioiello\");\r\n        annuncioGioielloRepository.save(annuncioGioiello);\r\n        return annuncioGioiello;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/diyamonds_backend_2/src/main/java/it/unito/taass/diyamonds2/controller/AnnuncioGioielloController.java b/diyamonds_backend_2/src/main/java/it/unito/taass/diyamonds2/controller/AnnuncioGioielloController.java
+--- a/diyamonds_backend_2/src/main/java/it/unito/taass/diyamonds2/controller/AnnuncioGioielloController.java	(revision c4bf9b5af6ffbc304baca183d4a50f796f0b4936)
++++ b/diyamonds_backend_2/src/main/java/it/unito/taass/diyamonds2/controller/AnnuncioGioielloController.java	(date 1675275986283)
+@@ -1,9 +1,19 @@
+ package it.unito.taass.diyamonds2.controller;
+ 
+ import it.unito.taass.diyamonds2.model.AnnuncioGioiello;
++import it.unito.taass.diyamonds2.mq.Sender;
+ import it.unito.taass.diyamonds2.repo.AnnuncioGioielloRepository;
++import org.springframework.amqp.core.Binding;
++import org.springframework.amqp.core.BindingBuilder;
++import org.springframework.amqp.core.Queue;
++import org.springframework.amqp.core.TopicExchange;
++import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+ import org.springframework.amqp.rabbit.core.RabbitTemplate;
++import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
++import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
+ import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.beans.factory.annotation.Value;
++import org.springframework.context.annotation.Bean;
+ import org.springframework.web.bind.annotation.*;
+ 
+ import java.util.ArrayList;
+@@ -19,6 +29,14 @@
+     @Autowired
+     AnnuncioGioielloRepository annuncioGioielloRepository;
+ 
++    private Sender rabbitMqSender;
++    @Autowired
++    public AnnuncioGioielloController(Sender rabbitMqSender) {
++        this.rabbitMqSender = rabbitMqSender;
++    }
++    @Value("${app.message}")
++    private String message;
++
+     @GetMapping("/annunciGioielli")
+     public List<AnnuncioGioiello> getAllAnnunciGioielli() {
+         System.out.println("Get all Annunci Gioielli");
+@@ -39,6 +57,7 @@
+     public AnnuncioGioiello addAnnuncioGioiello(@RequestBody AnnuncioGioiello annuncioGioiello) {
+         System.out.println("Creazione Annuncio Gioiello");
+         annuncioGioielloRepository.save(annuncioGioiello);
++        rabbitMqSender.send(annuncioGioiello.toString());
+         return annuncioGioiello;
+     }
+ }
+Index: diyamonds_backend_2/src/main/resources/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>eureka:\r\n    client:\r\n        serviceUrl:\r\n            defaultZone: http://eureka-server:8761/eureka\r\n    instance:\r\n        preferIpAddress: true\r\nserver:\r\n    port: 8082\r\nspring:\r\n    application:\r\n      name: microService2\r\n    datasource:\r\n        driver-class-name: org.postgresql.Driver\r\n        password: admin\r\n        url: jdbc:postgresql://dbpostgresql2:5433/postgres\r\n        username: postgres\r\n    jpa:\r\n        database-platform: org.hibernate.dialect.PostgreSQL9Dialect\r\n        hibernate:\r\n            ddl-auto: create\r\n        properties:\r\n            hibernate:\r\n                temp:\r\n                    use_jdbc_metadata_defaults: false\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/diyamonds_backend_2/src/main/resources/application.yml b/diyamonds_backend_2/src/main/resources/application.yml
+--- a/diyamonds_backend_2/src/main/resources/application.yml	(revision c4bf9b5af6ffbc304baca183d4a50f796f0b4936)
++++ b/diyamonds_backend_2/src/main/resources/application.yml	(date 1675277410044)
+@@ -22,3 +22,13 @@
+             hibernate:
+                 temp:
+                     use_jdbc_metadata_defaults: false
++    rabbitmq:
++        host: rabbitmq
++        password: guest
++        port: 15672
++        username: guest
++        exchange: user.exchange
++        queue: user.queue
++        routingkey: user.routingkey
++app:
++    message: Message has been sent Successfully..
+Index: diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/controller/VenditoreController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package it.unito.taass.diyamonds.controller;\r\n\r\nimport it.unito.taass.diyamonds.model.AnnuncioGioiello;\r\nimport it.unito.taass.diyamonds.model.Venditore;\r\nimport it.unito.taass.diyamonds.repo.AnnuncioGioielloRepository;\r\nimport it.unito.taass.diyamonds.repo.VenditoreRepository;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.http.HttpStatus;\r\nimport org.springframework.http.ResponseEntity;\r\nimport org.springframework.web.bind.annotation.*;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\nimport java.util.Optional;\r\n\r\n@CrossOrigin(origins = \"http://localhost:4200\")\r\n@RestController\r\n@RequestMapping(\"/api/v1/ms1\")\r\npublic class VenditoreController {\r\n\r\n    @Autowired\r\n    VenditoreRepository venditoreRepository;\r\n    @Autowired\r\n    AnnuncioGioielloRepository annuncioGioielloRepository;\r\n\r\n    @GetMapping(\"/venditori\")\r\n    public List<Venditore> getAllVenditori() {\r\n        System.out.println(\"Get all Venditori\");\r\n        List<Venditore> venditori = new ArrayList<>();\r\n        venditoreRepository.findAll().forEach(venditori::add);\r\n        return venditori;\r\n    }\r\n\r\n    @PostMapping(\"/venditori/{id}/creaAnnuncioGioiello\")\r\n    public AnnuncioGioiello addAnnuncioGioiello(@PathVariable(\"id\") long id, @RequestBody AnnuncioGioiello annuncioGioiello) {\r\n        System.out.println(\"Creazione Annuncio Gioiello\");\r\n        Optional<Venditore> v = venditoreRepository.findById(id);\r\n        Venditore venditore = v.get();\r\n        annuncioGioiello.setIdVenditore(id);\r\n        venditore.getAnnunciGioelli().add(annuncioGioiello);\r\n        annuncioGioielloRepository.save(annuncioGioiello);\r\n        venditoreRepository.save(venditore);\r\n        return annuncioGioiello;\r\n    }\r\n\r\n    @DeleteMapping(\"/venditori/{id}\")\r\n    public ResponseEntity<String> deleteVenditore(@PathVariable(\"id\") long id) {\r\n        System.out.println(\"Delete ListaAnnunci with ID = \" + id + \"...\");\r\n        venditoreRepository.deleteById(id);\r\n        return new ResponseEntity<>(\"Venditore has been deleted!\", HttpStatus.OK);\r\n    }\r\n\r\n    @DeleteMapping(\"/venditori/delete\")\r\n    public ResponseEntity<String> deleteAllVenditori() {\r\n        System.out.println(\"Delete All Venditori...\");\r\n        venditoreRepository.deleteAll();\r\n        return new ResponseEntity<>(\"All Venditori have been deleted!\", HttpStatus.OK);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/controller/VenditoreController.java b/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/controller/VenditoreController.java
+--- a/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/controller/VenditoreController.java	(revision c4bf9b5af6ffbc304baca183d4a50f796f0b4936)
++++ b/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/controller/VenditoreController.java	(date 1675279128254)
+@@ -23,6 +23,8 @@
+     @Autowired
+     AnnuncioGioielloRepository annuncioGioielloRepository;
+ 
++    public VenditoreController() {}
++
+     @GetMapping("/venditori")
+     public List<Venditore> getAllVenditori() {
+         System.out.println("Get all Venditori");
+@@ -31,14 +33,16 @@
+         return venditori;
+     }
+ 
+-    @PostMapping("/venditori/{id}/creaAnnuncioGioiello")
+-    public AnnuncioGioiello addAnnuncioGioiello(@PathVariable("id") long id, @RequestBody AnnuncioGioiello annuncioGioiello) {
++    @PostMapping("/venditori/aggiungiAnnuncioVenditore")
++    public AnnuncioGioiello addAnnuncioGioiello(String jsonMessaggio) {
++        //Metodo per creare oggetto a partire da Json
++        AnnuncioGioiello annuncioGioiello = new AnnuncioGioiello();
+         System.out.println("Creazione Annuncio Gioiello");
+-        Optional<Venditore> v = venditoreRepository.findById(id);
++        Optional<Venditore> v = venditoreRepository.findById(annuncioGioiello.getIdVenditore());
+         Venditore venditore = v.get();
+-        annuncioGioiello.setIdVenditore(id);
++        //annuncioGioiello.setIdVenditore(id);
+         venditore.getAnnunciGioelli().add(annuncioGioiello);
+-        annuncioGioielloRepository.save(annuncioGioiello);
++        //annuncioGioielloRepository.save(annuncioGioiello);
+         venditoreRepository.save(venditore);
+         return annuncioGioiello;
+     }
+Index: .idea/uiDesigner.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/uiDesigner.xml b/.idea/uiDesigner.xml
+new file mode 100644
+--- /dev/null	(date 1675190686445)
++++ b/.idea/uiDesigner.xml	(date 1675190686445)
+@@ -0,0 +1,124 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="Palette2">
++    <group name="Swing">
++      <item class="com.intellij.uiDesigner.HSpacer" tooltip-text="Horizontal Spacer" icon="/com/intellij/uiDesigner/icons/hspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="1" hsize-policy="6" anchor="0" fill="1" />
++      </item>
++      <item class="com.intellij.uiDesigner.VSpacer" tooltip-text="Vertical Spacer" icon="/com/intellij/uiDesigner/icons/vspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="1" anchor="0" fill="2" />
++      </item>
++      <item class="javax.swing.JPanel" icon="/com/intellij/uiDesigner/icons/panel.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JScrollPane" icon="/com/intellij/uiDesigner/icons/scrollPane.svg" removable="false" auto-create-binding="false" can-attach-label="true">
++        <default-constraints vsize-policy="7" hsize-policy="7" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JButton" icon="/com/intellij/uiDesigner/icons/button.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="0" fill="1" />
++        <initial-values>
++          <property name="text" value="Button" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JRadioButton" icon="/com/intellij/uiDesigner/icons/radioButton.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="RadioButton" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JCheckBox" icon="/com/intellij/uiDesigner/icons/checkBox.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="CheckBox" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JLabel" icon="/com/intellij/uiDesigner/icons/label.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="0" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="Label" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JTextField" icon="/com/intellij/uiDesigner/icons/textField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JPasswordField" icon="/com/intellij/uiDesigner/icons/passwordField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JFormattedTextField" icon="/com/intellij/uiDesigner/icons/formattedTextField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTextArea" icon="/com/intellij/uiDesigner/icons/textArea.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTextPane" icon="/com/intellij/uiDesigner/icons/textPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JEditorPane" icon="/com/intellij/uiDesigner/icons/editorPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JComboBox" icon="/com/intellij/uiDesigner/icons/comboBox.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="2" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JTable" icon="/com/intellij/uiDesigner/icons/table.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JList" icon="/com/intellij/uiDesigner/icons/list.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="2" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTree" icon="/com/intellij/uiDesigner/icons/tree.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTabbedPane" icon="/com/intellij/uiDesigner/icons/tabbedPane.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
++          <preferred-size width="200" height="200" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JSplitPane" icon="/com/intellij/uiDesigner/icons/splitPane.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
++          <preferred-size width="200" height="200" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JSpinner" icon="/com/intellij/uiDesigner/icons/spinner.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JSlider" icon="/com/intellij/uiDesigner/icons/slider.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JSeparator" icon="/com/intellij/uiDesigner/icons/separator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JProgressBar" icon="/com/intellij/uiDesigner/icons/progressbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1" />
++      </item>
++      <item class="javax.swing.JToolBar" icon="/com/intellij/uiDesigner/icons/toolbar.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1">
++          <preferred-size width="-1" height="20" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JToolBar$Separator" icon="/com/intellij/uiDesigner/icons/toolbarSeparator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="0" anchor="0" fill="1" />
++      </item>
++      <item class="javax.swing.JScrollBar" icon="/com/intellij/uiDesigner/icons/scrollbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="0" anchor="0" fill="2" />
++      </item>
++    </group>
++  </component>
++</project>
+\ No newline at end of file
+Index: diyamonds_backend_2/src/main/java/it/unito/taass/diyamonds2/Diyamonds2Application.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package it.unito.taass.diyamonds2;\r\n\r\nimport org.springframework.boot.SpringApplication;\r\nimport org.springframework.boot.autoconfigure.SpringBootApplication;\r\nimport org.springframework.cloud.netflix.eureka.EnableEurekaClient;\r\n\r\n@SpringBootApplication\r\n@EnableEurekaClient\r\npublic class Diyamonds2Application {\r\n\r\n\tpublic static void main(String[] args) {\r\n\t\tSpringApplication.run(Diyamonds2Application.class, args);\r\n\t}\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/diyamonds_backend_2/src/main/java/it/unito/taass/diyamonds2/Diyamonds2Application.java b/diyamonds_backend_2/src/main/java/it/unito/taass/diyamonds2/Diyamonds2Application.java
+--- a/diyamonds_backend_2/src/main/java/it/unito/taass/diyamonds2/Diyamonds2Application.java	(revision c4bf9b5af6ffbc304baca183d4a50f796f0b4936)
++++ b/diyamonds_backend_2/src/main/java/it/unito/taass/diyamonds2/Diyamonds2Application.java	(date 1675276205217)
+@@ -1,15 +1,52 @@
+ package it.unito.taass.diyamonds2;
+ 
++import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
++import org.springframework.amqp.rabbit.connection.ConnectionFactory;
++import org.springframework.amqp.rabbit.core.RabbitTemplate;
++import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
++import org.springframework.amqp.support.converter.MessageConverter;
++import org.springframework.beans.factory.annotation.Value;
+ import org.springframework.boot.SpringApplication;
+ import org.springframework.boot.autoconfigure.SpringBootApplication;
+ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
++import org.springframework.context.annotation.Bean;
+ 
+ @SpringBootApplication
+ @EnableEurekaClient
+ public class Diyamonds2Application {
+ 
++
++	@Value("${spring.rabbitmq.host}")
++	String host;
++
++	@Value("${spring.rabbitmq.username}")
++	String username;
++
++	@Value("${spring.rabbitmq.password}")
++	String password;
++
+ 	public static void main(String[] args) {
+ 		SpringApplication.run(Diyamonds2Application.class, args);
+ 	}
+ 
++	@Bean
++	CachingConnectionFactory connectionFactory() {
++		CachingConnectionFactory cachingConnectionFactory = new CachingConnectionFactory(host);
++		cachingConnectionFactory.setUsername(username);
++		cachingConnectionFactory.setPassword(password);
++		return cachingConnectionFactory;
++	}
++
++	@Bean
++	public MessageConverter jsonMessageConverter() {
++		return new Jackson2JsonMessageConverter();
++	}
++
++	@Bean
++	public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
++		final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
++		rabbitTemplate.setMessageConverter(jsonMessageConverter());
++		return rabbitTemplate;
++	}
++
+ }
+Index: docker-compose.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>version: '3.8'\r\n\r\nservices:\r\n  eureka-server:\r\n    build: eurekaServer\r\n    container_name: eureka-server\r\n    ports:\r\n      - \"8761:8761\"\r\n  dbpostgresql:\r\n    container_name: postgres\r\n    image: \"postgres\"\r\n    ports:\r\n      - \"5432:5432\"\r\n    volumes:\r\n      - db-data:/var/lib/postgresql/data\r\n    environment:\r\n      POSTGRES_DB: postgres\r\n      POSTGRES_USER: postgres\r\n      POSTGRES_PASSWORD: admin\r\n      restart: unless-stopped\r\n  app:\r\n    build: ./diyamonds_backend_1\r\n    container_name: diyamonds_backend_1\r\n    ports:\r\n      - \"8081:8081\"\r\n    depends_on:\r\n      - dbpostgresql\r\n      - eureka-server\r\n    environment:\r\n      - SPRING_DATASOURCE_URL=jdbc:postgresql://dbpostgresql:5432/postgres\r\n      - SPRING_DATASOURCE_USERNAME=postgres\r\n      - SPRING_DATASOURCE_PASSWORD=admin\r\n      - SPRING_JPA_HIBERNATE_DDL_AUTO=update\r\n  dbpostgresql2:\r\n    container_name: postgres_2\r\n    image: \"postgres\"\r\n    ports:\r\n      - \"5433:5432\"\r\n    volumes:\r\n      - db-data2:/var/lib/postgresql/data\r\n    depends_on:\r\n      - app\r\n      - dbpostgresql\r\n      - eureka-server\r\n    environment:\r\n      POSTGRES_DB: postgres\r\n      POSTGRES_USER: postgres\r\n      POSTGRES_PASSWORD: admin\r\n      restart: unless-stopped\r\n  app2:\r\n    build: ./diyamonds_backend_2\r\n    container_name: diyamonds_backend_2\r\n    ports:\r\n      - \"8082:8082\"\r\n    depends_on:\r\n      - app\r\n      - dbpostgresql\r\n      - dbpostgresql2\r\n      - eureka-server\r\n    environment:\r\n      - SPRING_DATASOURCE_URL=jdbc:postgresql://dbpostgresql2:5432/postgres\r\n      - SPRING_DATASOURCE_USERNAME=postgres\r\n      - SPRING_DATASOURCE_PASSWORD=admin\r\n      - SPRING_JPA_HIBERNATE_DDL_AUTO=update\r\n    #rabbitmq3:\r\n    #container_name: rabbitmq\r\n    #image: rabbitmq:3.8-management-alpine\r\n      #environment:\r\n      #- RABBITMQ_DEFAULT_USER=admin\r\n      #- RABBITMQ_DEFAULT_PASS=admin\r\n      #ports:\r\n      # AMQP protocol port\r\n      #- \"5672:5672\"\r\n      # HTTP management UI\r\n      #- \"15672:15672\"\r\n      #networks:\r\n      #- rabbitmq\r\n  api-gateway:\r\n    build: apiGateway\r\n    container_name: api-gateway\r\n    ports:\r\n      - \"8083:8083\"\r\n    depends_on:\r\n      - eureka-server\r\nvolumes:\r\n  db-data:\r\n  db-data2:\r\nnetworks:\r\n  rabbitmq:\r\n    driver: bridge\r\n# docker-compose build && docker-compose up\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/docker-compose.yml b/docker-compose.yml
+--- a/docker-compose.yml	(revision c4bf9b5af6ffbc304baca183d4a50f796f0b4936)
++++ b/docker-compose.yml	(date 1675275179363)
+@@ -62,19 +62,14 @@
+       - SPRING_DATASOURCE_USERNAME=postgres
+       - SPRING_DATASOURCE_PASSWORD=admin
+       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+-    #rabbitmq3:
+-    #container_name: rabbitmq
+-    #image: rabbitmq:3.8-management-alpine
+-      #environment:
+-      #- RABBITMQ_DEFAULT_USER=admin
+-      #- RABBITMQ_DEFAULT_PASS=admin
+-      #ports:
+-      # AMQP protocol port
+-      #- "5672:5672"
+-      # HTTP management UI
+-      #- "15672:15672"
+-      #networks:
+-      #- rabbitmq
++  rabbitmq3:
++    container_name: rabbitmq
++    image: rabbitmq:3.8-management-alpine
++    ports:
++    # AMQP protocol port
++    - "5672:5672"
++    # HTTP management UI
++    - "15672:15672"
+   api-gateway:
+     build: apiGateway
+     container_name: api-gateway
+@@ -85,8 +80,6 @@
+ volumes:
+   db-data:
+   db-data2:
+-networks:
+-  rabbitmq:
+-    driver: bridge
++
+ # docker-compose build && docker-compose up
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"158c2449-9bec-4cce-9ddb-a8efa423ce32\" name=\"Changes\" comment=\"maxi commit speriamo bene\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/apiGateway/Dockerfile\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/apiGateway/Dockerfile\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/apiGateway/src/main/resources/application.yml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/apiGateway/src/main/resources/application.yml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/diyamonds_backend_1/Dockerfile\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/diyamonds_backend_1/Dockerfile\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/controller/AnnuncioGioielloController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/controller/AnnuncioGioielloController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/controller/AnnuncioMateriaPrimaController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/controller/AnnuncioMateriaPrimaController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/controller/FornitoreController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/controller/FornitoreController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/controller/UserController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/controller/UserController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/controller/VenditoreController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/controller/VenditoreController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/diyamonds_backend_1/src/main/resources/application.yml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/diyamonds_backend_1/src/main/resources/application.yml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/diyamonds_backend_1/target/classes/it/unito/taass/diyamonds/controller/AnnuncioGioielloController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/diyamonds_backend_1/target/classes/it/unito/taass/diyamonds/controller/AnnuncioGioielloController.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/diyamonds_backend_1/target/classes/it/unito/taass/diyamonds/controller/AnnuncioMateriaPrimaController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/diyamonds_backend_1/target/classes/it/unito/taass/diyamonds/controller/AnnuncioMateriaPrimaController.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/diyamonds_backend_1/target/classes/it/unito/taass/diyamonds/controller/FornitoreController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/diyamonds_backend_1/target/classes/it/unito/taass/diyamonds/controller/FornitoreController.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/diyamonds_backend_1/target/classes/it/unito/taass/diyamonds/controller/UserController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/diyamonds_backend_1/target/classes/it/unito/taass/diyamonds/controller/UserController.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/diyamonds_backend_1/target/classes/it/unito/taass/diyamonds/controller/VenditoreController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/diyamonds_backend_1/target/classes/it/unito/taass/diyamonds/controller/VenditoreController.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/diyamonds_backend_1/target/diyamonds_backend_1.jar\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/diyamonds_backend_1/target/diyamonds_backend_1.jar\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/diyamonds_backend_1/target/diyamonds_backend_1.jar.original\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/diyamonds_backend_1/target/diyamonds_backend_1.jar.original\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/diyamonds_backend_2/Dockerfile\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/diyamonds_backend_2/Dockerfile\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/diyamonds_backend_2/src/main/java/it/unito/taass/diyamonds2/controller/AnnuncioGioielloController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/diyamonds_backend_2/src/main/java/it/unito/taass/diyamonds2/controller/AnnuncioGioielloController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/diyamonds_backend_2/src/main/java/it/unito/taass/diyamonds2/controller/AnnuncioMateriaPrimaController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/diyamonds_backend_2/src/main/java/it/unito/taass/diyamonds2/controller/AnnuncioMateriaPrimaController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/diyamonds_backend_2/src/main/resources/application.yml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/diyamonds_backend_2/src/main/resources/application.yml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/docker-compose.yml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/docker-compose.yml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/eurekaServer/Dockerfile\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/eurekaServer/Dockerfile\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"useMavenConfig\" value=\"true\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"MavenRunner\">\r\n    <option name=\"skipTests\" value=\"true\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2KJUJP91s1EOEGYhW8uG1MxZ1gX\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Users/Matteo/Desktop/progettoTaass-main/progettoTaass-main\",\r\n    \"settings.editor.selected.configurable\": \"preferences.pluginManager\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Matteo\\Desktop\\Diyamonds_TAASS\" />\r\n      <recent name=\"C:\\Users\\Matteo\\Desktop\\Diyamonds_TAASS\\Diyamonds_backend_2\\src\\main\\java\\it\\unito\\taass\\diyamonds2\\repo\" />\r\n      <recent name=\"C:\\Users\\Matteo\\Desktop\\Diyamonds_TAASS\\Diyamonds_backend_2\\src\\main\\java\\it\\unito\\taass\\diyamonds2\\model\" />\r\n      <recent name=\"C:\\Users\\Matteo\\Desktop\\Diyamonds_TAASS\\Diyamonds_backend_2\\src\\main\\java\\it\\unito\\taass\\diyamonds2\\controller\" />\r\n      <recent name=\"C:\\Users\\Matteo\\Desktop\\Diyamonds_TAASS\\Diyamonds_backend_2\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunAnythingCache\">\r\n    <option name=\"myCommands\">\r\n      <command value=\"mvn clean install\" />\r\n    </option>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Docker.docker-compose.yml.api-gateway: Compose Deployment\">\r\n    <configuration name=\"docker-compose.yml: Compose Deployment\" type=\"docker-deploy\" factoryName=\"docker-compose.yml\" temporary=\"true\" server-name=\"Docker\">\r\n      <deployment type=\"docker-compose.yml\">\r\n        <settings>\r\n          <option name=\"sourceFilePath\" value=\"docker-compose.yml\" />\r\n        </settings>\r\n      </deployment>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"docker-compose.yml.api-gateway: Compose Deployment\" type=\"docker-deploy\" factoryName=\"docker-compose.yml\" temporary=\"true\" server-name=\"Docker\">\r\n      <deployment type=\"docker-compose.yml\">\r\n        <settings>\r\n          <option name=\"services\">\r\n            <list>\r\n              <option value=\"api-gateway\" />\r\n            </list>\r\n          </option>\r\n          <option name=\"sourceFilePath\" value=\"docker-compose.yml\" />\r\n        </settings>\r\n      </deployment>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"docker-compose.yml.app: Compose Deployment\" type=\"docker-deploy\" factoryName=\"docker-compose.yml\" temporary=\"true\" server-name=\"Docker\">\r\n      <deployment type=\"docker-compose.yml\">\r\n        <settings>\r\n          <option name=\"services\">\r\n            <list>\r\n              <option value=\"app\" />\r\n            </list>\r\n          </option>\r\n          <option name=\"sourceFilePath\" value=\"docker-compose.yml\" />\r\n        </settings>\r\n      </deployment>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"docker-compose.yml.eureka-server: Compose Deployment\" type=\"docker-deploy\" factoryName=\"docker-compose.yml\" temporary=\"true\" server-name=\"Docker\">\r\n      <deployment type=\"docker-compose.yml\">\r\n        <settings>\r\n          <option name=\"services\">\r\n            <list>\r\n              <option value=\"eureka-server\" />\r\n            </list>\r\n          </option>\r\n          <option name=\"sourceFilePath\" value=\"docker-compose.yml\" />\r\n        </settings>\r\n      </deployment>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"eurekaServer/Dockerfile\" type=\"docker-deploy\" factoryName=\"dockerfile\" temporary=\"true\" server-name=\"Docker\">\r\n      <deployment type=\"dockerfile\">\r\n        <settings>\r\n          <option name=\"sourceFilePath\" value=\"eurekaServer/Dockerfile\" />\r\n        </settings>\r\n      </deployment>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Docker.docker-compose.yml.api-gateway: Compose Deployment\" />\r\n        <item itemvalue=\"Docker.docker-compose.yml.eureka-server: Compose Deployment\" />\r\n        <item itemvalue=\"Docker.eurekaServer/Dockerfile\" />\r\n        <item itemvalue=\"Docker.docker-compose.yml.app: Compose Deployment\" />\r\n        <item itemvalue=\"Docker.docker-compose.yml: Compose Deployment\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"158c2449-9bec-4cce-9ddb-a8efa423ce32\" name=\"Changes\" comment=\"\" />\r\n      <created>1673692114529</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1673692114529</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"maxi commit speriamo bene\">\r\n      <created>1674136468595</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1674136468595</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"maxi commit speriamo bene\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"maxi commit speriamo bene\" />\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision c4bf9b5af6ffbc304baca183d4a50f796f0b4936)
++++ b/.idea/workspace.xml	(date 1675279017016)
+@@ -5,29 +5,18 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="158c2449-9bec-4cce-9ddb-a8efa423ce32" name="Changes" comment="maxi commit speriamo bene">
++      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/mq/Config.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/mq/Receiver.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/apiGateway/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/Dockerfile" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/apiGateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/src/main/resources/application.yml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/diyamonds_backend_1/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/diyamonds_backend_1/Dockerfile" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/controller/AnnuncioGioielloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/controller/AnnuncioGioielloController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/controller/AnnuncioMateriaPrimaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/controller/AnnuncioMateriaPrimaController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/controller/FornitoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/controller/FornitoreController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/controller/UserController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/controller/VenditoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/controller/VenditoreController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/diyamonds_backend_1/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/diyamonds_backend_1/src/main/resources/application.yml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/diyamonds_backend_1/target/classes/it/unito/taass/diyamonds/controller/AnnuncioGioielloController.class" beforeDir="false" afterPath="$PROJECT_DIR$/diyamonds_backend_1/target/classes/it/unito/taass/diyamonds/controller/AnnuncioGioielloController.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/diyamonds_backend_1/target/classes/it/unito/taass/diyamonds/controller/AnnuncioMateriaPrimaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/diyamonds_backend_1/target/classes/it/unito/taass/diyamonds/controller/AnnuncioMateriaPrimaController.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/diyamonds_backend_1/target/classes/it/unito/taass/diyamonds/controller/FornitoreController.class" beforeDir="false" afterPath="$PROJECT_DIR$/diyamonds_backend_1/target/classes/it/unito/taass/diyamonds/controller/FornitoreController.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/diyamonds_backend_1/target/classes/it/unito/taass/diyamonds/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/diyamonds_backend_1/target/classes/it/unito/taass/diyamonds/controller/UserController.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/diyamonds_backend_1/target/classes/it/unito/taass/diyamonds/controller/VenditoreController.class" beforeDir="false" afterPath="$PROJECT_DIR$/diyamonds_backend_1/target/classes/it/unito/taass/diyamonds/controller/VenditoreController.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/diyamonds_backend_1/target/diyamonds_backend_1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/diyamonds_backend_1/target/diyamonds_backend_1.jar" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/diyamonds_backend_1/target/diyamonds_backend_1.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/diyamonds_backend_1/target/diyamonds_backend_1.jar.original" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/diyamonds_backend_2/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/diyamonds_backend_2/Dockerfile" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/diyamonds_backend_2/src/main/java/it/unito/taass/diyamonds2/Diyamonds2Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/diyamonds_backend_2/src/main/java/it/unito/taass/diyamonds2/Diyamonds2Application.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/diyamonds_backend_2/src/main/java/it/unito/taass/diyamonds2/controller/AnnuncioGioielloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/diyamonds_backend_2/src/main/java/it/unito/taass/diyamonds2/controller/AnnuncioGioielloController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/diyamonds_backend_2/src/main/java/it/unito/taass/diyamonds2/controller/AnnuncioMateriaPrimaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/diyamonds_backend_2/src/main/java/it/unito/taass/diyamonds2/controller/AnnuncioMateriaPrimaController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/diyamonds_backend_2/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/diyamonds_backend_2/src/main/resources/application.yml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/eurekaServer/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/eurekaServer/Dockerfile" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -67,7 +56,7 @@
+     "RunOnceActivity.OpenProjectViewOnStart": "true",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "last_opened_file_path": "C:/Users/Matteo/Desktop/progettoTaass-main/progettoTaass-main",
++    "last_opened_file_path": "C:/Users/Matteo/Desktop/Diyamonds_TAASS",
+     "settings.editor.selected.configurable": "preferences.pluginManager"
+   }
+ }]]></component>
+@@ -167,7 +156,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1674136468595</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="maxi commit speriamo bene">
++      <created>1675105184471</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1675105184471</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+Index: diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/mq/Receiver.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/mq/Receiver.java b/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/mq/Receiver.java
+new file mode 100644
+--- /dev/null	(date 1675279363711)
++++ b/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/mq/Receiver.java	(date 1675279363711)
+@@ -0,0 +1,31 @@
++package it.unito.taass.diyamonds.mq;
++
++import it.unito.taass.diyamonds.controller.VenditoreController;
++import it.unito.taass.diyamonds.repo.VenditoreRepository;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
++import org.springframework.amqp.rabbit.annotation.RabbitListener;
++import org.springframework.amqp.rabbit.annotation.RabbitListenerConfigurer;
++import org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistrar;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.stereotype.Component;
++
++
++@Component
++public class Receiver implements RabbitListenerConfigurer {
++
++    private static final Logger logger = LoggerFactory.getLogger(Receiver.class);
++
++    @Override
++    public void configureRabbitListeners(RabbitListenerEndpointRegistrar rabbitListenerEndpointRegistrar) {
++    }
++
++    @RabbitListener(queues = "${spring.rabbitmq.queue}")
++    public void receivedMessage(String message) {
++        logger.info("User Details Received is.. " + message);
++
++        VenditoreController venditoreController = new VenditoreController();
++        venditoreController.addAnnuncioGioiello(message);
++
++    }
++}
+\ No newline at end of file
+Index: diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/mq/Config.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/mq/Config.java b/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/mq/Config.java
+new file mode 100644
+--- /dev/null	(date 1675276393943)
++++ b/diyamonds_backend_1/src/main/java/it/unito/taass/diyamonds/mq/Config.java	(date 1675276393943)
+@@ -0,0 +1,66 @@
++package it.unito.taass.diyamonds.mq;
++
++import org.springframework.amqp.core.*;
++import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
++import org.springframework.amqp.rabbit.connection.ConnectionFactory;
++import org.springframework.amqp.rabbit.core.RabbitTemplate;
++import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
++import org.springframework.amqp.support.converter.MessageConverter;
++import org.springframework.beans.factory.annotation.Value;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Configuration;
++
++@Configuration
++public class Config {
++    @Value("${spring.rabbitmq.queue}")
++    private String queue;
++    @Value("${spring.rabbitmq.exchange}")
++    private String exchange;
++    @Value("${spring.rabbitmq.routingkey}")
++    private String routingKey;
++    @Value("${spring.rabbitmq.username}")
++    private String username;
++    @Value("${spring.rabbitmq.password}")
++    private String password;
++    @Value("${spring.rabbitmq.host}")
++    private String host;
++
++    @Bean
++    Queue queue() {
++        return new Queue(queue, true);
++    }
++
++    @Bean
++    Exchange myExchange() {
++        return ExchangeBuilder.directExchange(exchange).durable(true).build();
++    }
++
++    @Bean
++    Binding binding() {
++        return BindingBuilder
++                .bind(queue())
++                .to(myExchange())
++                .with(routingKey)
++                .noargs();
++    }
++
++    @Bean
++    public ConnectionFactory connectionFactory() {
++        CachingConnectionFactory cachingConnectionFactory = new CachingConnectionFactory(host);
++        cachingConnectionFactory.setUsername(username);
++        cachingConnectionFactory.setPassword(password);
++        return cachingConnectionFactory;
++    }
++
++    @Bean
++    public MessageConverter jsonMessageConverter() {
++        return new Jackson2JsonMessageConverter();
++    }
++
++    @Bean
++    public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
++        final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
++        rabbitTemplate.setMessageConverter(jsonMessageConverter());
++        return rabbitTemplate;
++    }
++}

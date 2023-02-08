@@ -5,7 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/Diyamonds_TAASS.iml" filepath="$PROJECT_DIR$/.idea/Diyamonds_TAASS.iml" />
       <module fileurl="file://$PROJECT_DIR$/apiGateway/api-gateway.iml" filepath="$PROJECT_DIR$/apiGateway/api-gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/Diyamonds_backend_1/diyamonds.iml" filepath="$PROJECT_DIR$/Diyamonds_backend_1/diyamonds.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Diyamonds_backend_2/diyamonds2.iml" filepath="$PROJECT_DIR$/Diyamonds_backend_2/diyamonds2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/diyamonds_backend_2/diyamonds2.iml" filepath="$PROJECT_DIR$/diyamonds_backend_2/diyamonds2.iml" />
       <module fileurl="file://$PROJECT_DIR$/eurekaServer/eureka-server.iml" filepath="$PROJECT_DIR$/eurekaServer/eureka-server.iml" />
     </modules>
   </component>

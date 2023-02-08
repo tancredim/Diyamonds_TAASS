@@ -14,7 +14,7 @@ export class AnnuncioService {
   constructor(private httpClient: HttpClient) { }
 
   getAnnuncio(id?: number): Observable<Annuncio>{
-    const URL = "http://localhost:8080/api/v1/annunciGioielli/"+id;
+    const URL = "http://localhost:8083/api/v1/ms2/annunciGioielli/"+id;
 
     return this.httpClient.get<Annuncio>(URL);
   }

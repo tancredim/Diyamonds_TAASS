@@ -1,0 +1,142 @@
+
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.prezzo{
+  margin-bottom: 1rem;
+  width: 16%;
+}
+
+.descrizione{
+  margin-bottom: 1rem;
+  width: 66%;
+}
+
+.buttonCreaAnnunncio{
+  margin-bottom: 1rem;
+  width: 66%;
+}
+
+.contact{
+  margin-left: 26rem;
+  margin-right: -26rem;
+
+}
+.contact-area {
+
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-color: #eee;
+  margin-top: -1rem;
+  height: 100%;
+  display: block;
+}
+
+
+
+.contact input {
+  background: #fff;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #232434;
+  font-size: 16px;
+  height: 60px;
+  width: 100%;
+  font-family: 'poppins', sans-serif;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.contact textarea {
+  background: #fff;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #232434;
+  font-size: 16px;
+  width: 100%;
+  font-family: 'poppins', sans-serif;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.contact input:focus {
+  background: #fff;
+  border: 1px solid #fff;
+  color: #232434;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: 0 none;
+}
+
+.contact textarea:focus {
+  background: #fff;
+  border: 1px solid #fff;
+  color: #232434;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: 0 none;
+}
+
+.form-control::placeholder {
+  color: #232434;
+  opacity: 1;
+}
+
+.btn-contact-bg {
+  border-radius: 30px;
+  color: #fff;
+  outline: medium none !important;
+  padding: 15px 27px;
+  text-transform: capitalize;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  background: #7564e5;
+  font-family: 'poppins', sans-serif;
+  cursor: pointer;
+  width: 100%;
+}
+
+.btn-contact-bg:hover,
+.btn-contact-bg:focus {
+  background: #232434;
+  color: #fff;
+}
+
+/*START ADDRESS*/
+
+
+
+
+
+.section-title h1 {
+
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 46px;
+  position: relative;
+  text-transform: capitalize;
+  margin-bottom: 15px;
+  margin-top: 1rem;
+}
+.section-title p {
+  padding: 0 10px;
+  width: 70%;
+  margin: auto;
+  letter-spacing: 1px;
+}
+.section-title {
+  margin-bottom: 60px;
+}
+.text-center {
+  text-align: center!important;
+}

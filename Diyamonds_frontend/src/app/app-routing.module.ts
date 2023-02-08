@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegistratiComponent } from './registrati/registrati.component';
 import { RegistrazioneCompletataComponent } from './registrazione-completata/registrazione-completata.component';
+import {CreazioneAnnuncioComponent} from './creazioneAnnuncio/creazioneAnnuncio.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
       { path: ':id', component: AnnuncioComponent }
 
     ]},
+  {path : 'creazioneAnnuncio',component: CreazioneAnnuncioComponent},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 
 ];

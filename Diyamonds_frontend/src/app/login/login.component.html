@@ -1,15 +1,26 @@
 <app-menu></app-menu>
-<div class="container" *ngIf="!loggedIn">
-    <div class="row m-3">
-        <div class="col md-6 mx-auto">
-            <div class="card">
-                <div class="card-header text-center">
-                  Login
-                </div>
-                <div class="card-body">
-                    <asl-google-signin-button type='standard' size='large' data-theme="filled_black"                    ></asl-google-signin-button>
-                </div>
-              </div>
-        </div>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+<div class="container" id="container">
+
+  <div class="form-container sign-in-container">
+    <form action="#">
+      <h1>Sign in</h1>
+      <div class="card-body" *ngIf="!loggedIn">
+        <asl-google-signin-button type='standard' size='large' data-theme="filled_black"></asl-google-signin-button>
+      </div>
+    </form>
+  </div>
+  <div class="overlay-container">
+    <div class="overlay">
+      <div class="overlay-panel overlay-right">
+        <h1>Login to Diyamonds Website </h1>
+      </div>
     </div>
+  </div>
 </div>
+
+
+
+
+

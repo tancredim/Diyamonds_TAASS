@@ -10,7 +10,7 @@ import { ListaAnnunci } from './listaAnnunci';
 export class ListaAnnunciService {
 
 
-  private baseURL = "http://localhost:8080/api/v1/annunciGioielli";
+  private baseURL = "http://localhost:8083/api/v1/ms2/annunciGioielli";
 
   constructor(private httpClient: HttpClient) { }
 

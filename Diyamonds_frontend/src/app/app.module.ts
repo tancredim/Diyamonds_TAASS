@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';  // <<<< import it here
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';  // <<<< import it here
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { ToastrModule } from 'ngx-toastr';
 //social login
 
 import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
@@ -16,7 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RegistratiComponent } from './registrati/registrati.component';
 import { RegistrazioneCompletataComponent } from './registrazione-completata/registrazione-completata.component';
-
+import { CarouselModule } from '@coreui/angular';
 import { MatSelectModule} from '@angular/material/select';
 import{MatFormFieldModule} from '@angular/material/form-field';
 import{MatInputModule} from '@angular/material/input';
@@ -27,6 +27,8 @@ import {MatButtonModule} from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListaAnnunciComponent } from './listaAnnunci/listaAnnunci.component';
 import {AnnuncioComponent} from "./annuncio/annuncio.component";
+import {CreazioneAnnuncioComponent} from "./creazioneAnnuncio/creazioneAnnuncio.component";
+import {SearchFilterPipe} from "./home/search-filter.pipe";
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import {AnnuncioComponent} from "./annuncio/annuncio.component";
     RegistratiComponent,
     RegistrazioneCompletataComponent,
     ListaAnnunciComponent,
-    AnnuncioComponent
+    AnnuncioComponent,
+    CreazioneAnnuncioComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,10 @@ import {AnnuncioComponent} from "./annuncio/annuncio.component";
     MatListModule,
     MatTabsModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule,
+    CarouselModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     {

@@ -18,4 +18,5 @@ it\unito\taass\diyamonds\model\MateriaPrima.class
 it\unito\taass\diyamonds\controller\AnnuncioMateriaPrimaController.class
 it\unito\taass\diyamonds\model\User.class
 it\unito\taass\diyamonds\controller\VenditoreController.class
+it\unito\taass\diyamonds\mq\RabbitMQConfig.class
 it\unito\taass\diyamonds\repo\VenditoreRepository.class

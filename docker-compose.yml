@@ -50,7 +50,7 @@ services:
       POSTGRES_PASSWORD: admin
       restart: unless-stopped
   app2:
-    image: jerik99/diyamonds_taass-app2
+    image: tancredim/diyamonds_taass-app2
     #build: ./diyamonds_backend_2
     container_name: diyamonds_backend_2
     ports:

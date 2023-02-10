@@ -3,6 +3,8 @@ kind: Service
 metadata:
   annotations:
     kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert
+    kompose.service.nodeport.port: "30000"
+    kompose.service.type: NodePort
     kompose.version: 1.28.0 (c4137012e)
   creationTimestamp: null
   labels:
@@ -11,9 +13,11 @@ metadata:
 spec:
   ports:
     - name: "8083"
+      nodePort: 30000
       port: 8083
       targetPort: 8083
   selector:
     io.kompose.service: api-gateway
+  type: NodePort
 status:
   loadBalancer: {}

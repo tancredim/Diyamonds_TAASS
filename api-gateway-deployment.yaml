@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   annotations:
     kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert
+    kompose.service.nodeport.port: "30000"
+    kompose.service.type: NodePort
     kompose.version: 1.28.0 (c4137012e)
   creationTimestamp: null
   labels:
@@ -18,6 +20,8 @@ spec:
     metadata:
       annotations:
         kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe convert
+        kompose.service.nodeport.port: "30000"
+        kompose.service.type: NodePort
         kompose.version: 1.28.0 (c4137012e)
       creationTimestamp: null
       labels:
@@ -25,7 +29,7 @@ spec:
         io.kompose.service: api-gateway
     spec:
       containers:
-        - image: api-gateway
+        - image: jerik99/diyamonds_taass-api-gateway
           name: api-gateway
           ports:
             - containerPort: 8083

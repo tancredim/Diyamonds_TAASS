@@ -34,7 +34,7 @@ spec:
               value: postgres
             - name: SPRING_JPA_HIBERNATE_DDL_AUTO
               value: update
-          image: app2
+          image: jerik99/diyamonds_taass-app2
           name: diyamonds-backend-2
           ports:
             - containerPort: 8082

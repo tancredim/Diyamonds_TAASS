@@ -25,7 +25,7 @@ spec:
         io.kompose.service: eureka-server
     spec:
       containers:
-        - image: eureka-server
+        - image: jerik99/diyamonds_taass-eureka-server
           name: eureka-server
           ports:
             - containerPort: 8761

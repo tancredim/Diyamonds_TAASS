@@ -1,6 +1,8 @@
 package it.unito.taass.diyamonds2.controller;
 
 import it.unito.taass.diyamonds2.model.AnnuncioMateriaPrima;
+import it.unito.taass.diyamonds2.mq.Sender;
+import it.unito.taass.diyamonds2.mq.SenderFornitore;
 import it.unito.taass.diyamonds2.repo.AnnuncioMateriaPrimaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +18,14 @@ public class AnnuncioMateriaPrimaController {
 
     @Autowired
     AnnuncioMateriaPrimaRepository annuncioMateriaPrimaRepository;
+
+    private SenderFornitore rabbitMqSender;
+
+    @Autowired
+    public AnnuncioMateriaPrimaController(SenderFornitore rabbitMqSender) {
+        this.rabbitMqSender = rabbitMqSender;
+    }
+
 
     @GetMapping("/annunciMateriaPrima")
     public List<AnnuncioMateriaPrima> getAllAnnunciMateriaPrima() {
@@ -36,6 +46,9 @@ public class AnnuncioMateriaPrimaController {
     public AnnuncioMateriaPrima addAnnuncioMateriaPrima(@RequestBody AnnuncioMateriaPrima annuncioMateriaPrima) {
         System.out.println("Creazione Annuncio Materia Prima");
         annuncioMateriaPrimaRepository.save(annuncioMateriaPrima);
+
+        rabbitMqSender.send(annuncioMateriaPrima);
+
         return annuncioMateriaPrima;
     }
 }

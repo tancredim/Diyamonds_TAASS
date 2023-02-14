@@ -31,7 +31,9 @@ spring:
         username: guest
         exchange: user.exchange
         queue: user.queue
+        queue2: user.queue2
         routingkey: user.routingkey
+        routingkey2: user.routingkey2
 
 jwt:
     expiration: 3600000

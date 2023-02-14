@@ -11,7 +11,7 @@ public class AnnuncioMateriaPrima implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Column(name = "idVenditore", nullable = false)
+    @Column(name = "idFornitore", nullable = false)
     private long idFornitore;
     @Column(name = "descrizione", nullable = false)
     private String descrizione;

@@ -2,10 +2,14 @@ version: '3.8'
 
 services:
   eureka-server:
-    build: eurekaServer
+    image: jerik99/diyamonds_taass-eureka-server
+    #build: eurekaServer
     container_name: eureka-server
     ports:
       - "8761:8761"
+    labels:
+      kompose.service.type: NodePort
+      kompose.service.nodeport.port: "30001"
   dbpostgresql:
     container_name: postgres
     image: "postgres"
@@ -19,7 +23,8 @@ services:
       POSTGRES_PASSWORD: admin
       restart: unless-stopped
   app:
-    build: ./diyamonds_backend_1
+    image: jerik99/diyamonds_taass-app
+    #build: ./diyamonds_backend_1
     container_name: diyamonds_backend_1
     ports:
       - "8081:8081"
@@ -48,7 +53,8 @@ services:
       POSTGRES_PASSWORD: admin
       restart: unless-stopped
   app2:
-    build: ./diyamonds_backend_2
+    image: jerik99/diyamonds_taass-app2
+    #build: ./diyamonds_backend_2
     container_name: diyamonds_backend_2
     ports:
       - "8082:8082"
@@ -71,12 +77,26 @@ services:
        #HTTP management UI
       - "15672:15672"
   api-gateway:
-    build: apiGateway
+    image: jerik99/diyamonds_taass-api-gateway
+    #build: apiGateway
     container_name: api-gateway
     ports:
       - "8083:8083"
     depends_on:
       - eureka-server
+    labels:
+      kompose.service.type: NodePort
+      kompose.service.nodeport.port: "30000"
+
+
+  #ui:
+      #build: .\Diyamonds_frontend
+      #container_name: diyamonds_frontend
+      #ports:
+      #  - "4200:80"
+      #depends_on:
+      #  - app
+      #  - app2
 volumes:
   db-data:
   db-data2:

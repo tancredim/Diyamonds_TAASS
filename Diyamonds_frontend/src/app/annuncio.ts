@@ -6,3 +6,16 @@ export class Annuncio {
   prezzo?:number;
 
 }
+
+export class AnnuncioMateriaPrima {
+
+  id? : number;
+  idFornitore?: number;
+  descrizione?: string;
+  materiaPrima?: string;
+  quantita?: number;
+  prezzo?: number;
+
+
+
+}

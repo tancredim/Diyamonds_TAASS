@@ -6,3 +6,16 @@ export class ListaAnnunci {
     prezzo?:number;
 
 }
+
+export class ListaAnnunciMateriaPrima {
+
+
+  id? : number;
+  idFornitore?: number;
+  descrizione?: string;
+  materiaPrima?: string;
+  quantita?: number;
+  prezzo?: number;
+
+
+}

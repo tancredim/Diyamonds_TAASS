@@ -1,0 +1,83 @@
+body{
+  margin-top:20px;
+  background:#eee;
+}
+
+
+.product-content {
+  border: 1px solid #dfe5e9;
+  margin-bottom: 20px;
+  margin-top: 12px;
+  background-color: #f5f5f5;
+  border: 1px solid #e3e3e3;
+}
+
+
+.Disponibilita {
+
+ font-size: 20px;
+
+}
+
+.product-content .product-image {
+
+  display: block;
+  min-height: 238px;
+  overflow: hidden;
+  position: relative
+}
+
+.product-content .description {
+  font-size: 16px;
+  line-height: 20px;
+  padding: 10px 14px 16px 19px;
+  padding: 0 0 5px;
+
+}
+
+.product-content .descriptionContent{
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+
+.product-deatil {
+  padding: 30px 30px 50px
+}
+
+
+.product-deatil .price-container {
+  font-size: 24px;
+  margin: 0;
+
+}
+
+.product-deatil .price-container .quantitaGioielli{
+  width: 25.9%;
+  margin-left: 30px;
+  font-size: 14px;
+  min-height: 29px;
+}
+
+.product-deatil .name{
+  font-size: 24px;
+}
+
+.btn-success{
+  background-color: #2650ff;
+  width: 180px;
+  --bs-btn-active-bg: #009fff;
+
+}
+.btn:hover{
+ background-color: #4f74ff;
+}
+
+.container{
+  width: 880px;
+}
+
+img{
+  margin-top: 80px;
+  max-width: 330px;
+}

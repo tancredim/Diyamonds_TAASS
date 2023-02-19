@@ -9,6 +9,14 @@
   width: 16%;
 }
 
+.quantita{
+
+  margin-bottom: 1rem;
+  width: 16%;
+
+}
+
+
 .descrizione{
   margin-bottom: 1rem;
   width: 66%;
@@ -139,4 +147,10 @@
 }
 .text-center {
   text-align: center!important;
+}
+
+
+.col-md-6{
+
+  width: 35%;
 }

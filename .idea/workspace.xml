@@ -5,9 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="158c2449-9bec-4cce-9ddb-a8efa423ce32" name="Changes" comment="maxi commit speriamo bene">
+      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/AnnuncioMateriaPrima/annuncioMateriaPrima.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/AnnuncioMateriaPrima/annuncioMateriaPrima.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/AnnuncioMateriaPrima/annuncioMateriaPrima.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/src/app/annuncio/annuncio.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/annuncio/annuncio.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/src/app/annuncio.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/annuncio.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/src/app/creazioneAnnuncio/creazioneAnnuncio.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/creazioneAnnuncio/creazioneAnnuncio.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/src/app/creazioneAnnuncio/creazioneAnnuncio.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/creazioneAnnuncio/creazioneAnnuncio.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/src/app/creazioneAnnuncio/creazioneAnnuncio.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/creazioneAnnuncio/creazioneAnnuncio.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/src/app/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/home/home.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/src/app/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/home/home.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/src/app/listaAnnunci.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/listaAnnunci.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,26 +56,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Matteo/Desktop/progettoTaass-main/progettoTaass-main&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;118935d9d9249c55b35ea6f3b99bf2ad&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Davide\\Desktop\\Dymonds\\Diyamonds_TAASS\\Diyamonds_frontend\\node_modules\\typescript\\lib&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Davide/Desktop/Dymonds/Diyamonds_TAASS/Diyamonds_frontend/src/app/AnnuncioMateriaPrima",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "spring.configuration.checksum": "118935d9d9249c55b35ea6f3b99bf2ad",
+    "ts.external.directory.path": "C:\\Users\\Davide\\Desktop\\Dymonds\\Diyamonds_TAASS\\Diyamonds_frontend\\node_modules\\typescript\\lib"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Davide\Desktop\Dymonds\Diyamonds_TAASS\Diyamonds_frontend\src\app\AnnuncioMateriaPrima" />
       <recent name="C:\Users\Matteo\Desktop\Diyamonds_TAASS" />
       <recent name="C:\Users\Matteo\Desktop\Diyamonds_TAASS\Diyamonds_backend_2\src\main\java\it\unito\taass\diyamonds2\repo" />
       <recent name="C:\Users\Matteo\Desktop\Diyamonds_TAASS\Diyamonds_backend_2\src\main\java\it\unito\taass\diyamonds2\model" />
       <recent name="C:\Users\Matteo\Desktop\Diyamonds_TAASS\Diyamonds_backend_2\src\main\java\it\unito\taass\diyamonds2\controller" />
-      <recent name="C:\Users\Matteo\Desktop\Diyamonds_TAASS\Diyamonds_backend_2" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -164,7 +174,10 @@
       <workItem from="1675611961277" duration="6696000" />
       <workItem from="1675709436731" duration="3322000" />
       <workItem from="1675795759057" duration="3052000" />
-      <workItem from="1675882831766" duration="1105000" />
+      <workItem from="1675882831766" duration="1270000" />
+      <workItem from="1676801280150" duration="9705000" />
+      <workItem from="1676818204334" duration="3479000" />
+      <workItem from="1676822054465" duration="3304000" />
     </task>
     <task id="LOCAL-00001" summary="maxi commit speriamo bene">
       <created>1674136468595</created>

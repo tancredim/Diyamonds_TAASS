@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { RegistratiComponent } from './registrati/registrati.component';
 import { RegistrazioneCompletataComponent } from './registrazione-completata/registrazione-completata.component';
 import {CreazioneAnnuncioComponent} from './creazioneAnnuncio/creazioneAnnuncio.component';
+import {AnnuncioMateriaPrimaComponent} from "./AnnuncioMateriaPrima/annuncioMateriaPrima.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -20,6 +21,12 @@ const routes: Routes = [
 
     ]},
   {path : 'creazioneAnnuncio',component: CreazioneAnnuncioComponent},
+
+  {path: 'annuncioMateriaPrima/:id',component:AnnuncioMateriaPrimaComponent, children: [
+
+      { path: ':id', component: AnnuncioMateriaPrimaComponent }
+
+    ]},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 
 ];

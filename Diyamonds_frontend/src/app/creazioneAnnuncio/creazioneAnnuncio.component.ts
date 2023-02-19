@@ -6,6 +6,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import * as Console from "console";
 import { ToastrService } from 'ngx-toastr';
+import {MatSelectChange} from "@angular/material/select";
 
 @Component({
   selector: 'app-creazioneAnnuncio',
@@ -16,23 +17,35 @@ import { ToastrService } from 'ngx-toastr';
 export class CreazioneAnnuncioComponent {
   private id?: number;
   annuncio?: Annuncio;
+  selectedData : any;
 
-
-
+  originalForm : FormGroup;
   form: FormGroup;
 
-
-  private baseURL = "http://localhost:8083/api/v1/ms2/annunciGioielli/creaAnnuncioGioiello";
+  private baseURL ="";
+  private URLAnnuncio = "http://localhost:8083/api/v1/ms2/annunciGioielli/creaAnnuncioGioiello";
+  private URLMateriaPrima = "http://localhost:8083/api/v1/ms2/annunciMateriaPrima/creaAnnuncioMateriaPrima";
 
   constructor(public fb: FormBuilder, private route: ActivatedRoute, private httpClient: HttpClient,
               private toastr: ToastrService) {
+
+
+    this.originalForm =this.fb.group({
+      idVenditore : 2,
+      descrizione: new FormControl('', [Validators.required]),
+      gioiello: new FormControl('', [Validators.required]),
+      prezzo:  new FormControl('', [Validators.required]),
+      quantita: new FormControl(0)
+    })
+
 
 
     this.form= this.fb.group({
       idVenditore : 2,
       descrizione: new FormControl('', [Validators.required]),
       gioiello: new FormControl('', [Validators.required]),
-      prezzo:  new FormControl('', [Validators.required])
+      prezzo:  new FormControl('', [Validators.required]),
+      quantita: new FormControl(0)
     })
 
 
@@ -49,8 +62,9 @@ export class CreazioneAnnuncioComponent {
 
 message : boolean = false;
 messageFailure : boolean = false;
+isMateriaPrimaSelected: boolean =false;
 
-  creaAnnuncio(inputs: {gioiello:string , prezzo:number, descrizione:string}){
+  creaAnnuncio(inputs: {gioiello:string , prezzo:number, descrizione:string, quantita: number}){
 
   this.messageFailure = false;
   this.message = false;
@@ -65,7 +79,24 @@ messageFailure : boolean = false;
     // @ts-ignore
     console.log(Number(this.form.get('prezzo').value));
 
+    if(this.isMateriaPrimaSelected){
 
+      this.baseURL = this.URLMateriaPrima;
+
+      this.form.removeControl('idVenditore');
+      this.form.addControl('idFornitore',new FormControl(2));
+      // @ts-ignore
+      const materiaPrima = this.form.get('gioiello').value;
+      this.form.removeControl('gioiello');
+      this.form.addControl('materiaPrima',new FormControl(materiaPrima));
+
+
+    }else{
+
+      this.baseURL = this.URLAnnuncio;
+
+      this.form.removeControl('quantita');
+    }
 
     this.httpClient
       .post(this.baseURL, this.form.value)
@@ -75,11 +106,13 @@ messageFailure : boolean = false;
         {
           this.message= true,
           this.form.reset();
+          this.form = this.originalForm;
         },
 
         error: (error) =>{
           this.messageFailure = true;
           this.form.reset();
+          this.form = this.originalForm;
         } ,
       });
 
@@ -96,6 +129,18 @@ messageFailure : boolean = false;
     this.messageFailure = false;
   }
 
+  selectedValue(event: MatSelectChange) {
+    this.selectedData = {
+      value: event.value,
+      text: event.source.triggerValue
+    };
+    if(this.selectedData.text == "Materia Prima"){
+      this.isMateriaPrimaSelected = true;
+    }
+    else {
+      this.isMateriaPrimaSelected =false;
+    }
+  }
 
 
 }

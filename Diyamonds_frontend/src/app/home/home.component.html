@@ -44,7 +44,7 @@
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>In quale categoria?</mat-label>
-        <mat-select>
+        <mat-select (selectionChange)="selectedValue($event)">
           <mat-option value="gioiello">Gioiello</mat-option>
           <mat-option value="materiaPrima">Materia Prima</mat-option>
         </mat-select>
@@ -81,13 +81,13 @@
     <mat-tab-group>
       <mat-tab label="TabGioiello">
         <mat-action-list>
-          <button  (click) = "search(gioiello.value)" mat-list-item  *ngFor ="let gioiello of gioielli"> {{gioiello.viewValue}}
+          <button  (click) = "searchTab(gioiello.value,true)" mat-list-item  *ngFor ="let gioiello of gioielli"> {{gioiello.viewValue}}
             </button>
         </mat-action-list>
       </mat-tab>
       <mat-tab label="TabMateriaPrima">
-        <mat-action-list>
-          <button mat-list-item *ngFor ="let matPrima of materiaPrima"> {{matPrima.viewValue}}</button>
+        <mat-action-list >
+          <button  (click) = "searchTab(matPrima.value,false)" mat-list-item *ngFor ="let matPrima of materiaPrima"> {{matPrima.viewValue}}</button>
 
         </mat-action-list>
       </mat-tab>
@@ -101,18 +101,35 @@
       <div class="col-xl-9 col-md-8">
 
         <!-- Item-->
+        <ng-container *ngIf="isMateriaPrimaSelected == true">
         <div class="d-sm-flex justify-content-between my-4 pb-4 border-bottom"
-             *ngFor = "let annuncio of annunciFiltered ">
+              *ngFor = "let annuncio of annunciFilteredMateriaPrima ">
           <div class="media d-block d-sm-flex text-center text-sm-left">
-            <a a routerLink="/annuncio/{{annuncio.id}}" class="cart-item-thumb mx-auto mr-sm-4" ><img src="/assets/images/gioiello1.jpg" alt="Product"></a>
+            <a a routerLink="/annuncio/{{annuncio.id}}" class="cart-item-thumb mx-auto mr-sm-4" ><img src="/assets/images/materiaPrima.jpg" alt="Product"></a>
             <div class="media-body pt-3">
-              <h3 class="product-card-title font-weight-semibold border-0 pb-0"><a routerLink="/annuncio/{{annuncio.id}}">{{ annuncio.gioiello }}</a></h3>
+              <h3 class="product-card-title font-weight-semibold border-0 pb-0"><a routerLink="/annuncioMateriaPrima/{{annuncio.id}}">{{ annuncio.materiaPrima }}</a></h3>
               <div class="font-size-sm"><span class="text-muted mr-2">Descrizione: </span>  {{ annuncio.descrizione }}</div>
               <div class="font-size-lg text-primary pt-2">{{ annuncio.prezzo }} € </div>
             </div>
           </div>
 
         </div>
+        </ng-container>
+
+        <ng-container *ngIf="isMateriaPrimaSelected == false ">
+          <div class="d-sm-flex justify-content-between my-4 pb-4 border-bottom"
+               *ngFor = "let annuncio of annunciFiltered ">
+            <div class="media d-block d-sm-flex text-center text-sm-left">
+              <a a routerLink="/annuncio/{{annuncio.id}}" class="cart-item-thumb mx-auto mr-sm-4" ><img src="/assets/images/gioiello1.jpg" alt="Product"></a>
+              <div class="media-body pt-3">
+                <h3 class="product-card-title font-weight-semibold border-0 pb-0"><a routerLink="/annuncio/{{annuncio.id}}">{{ annuncio.gioiello }}</a></h3>
+                <div class="font-size-sm"><span class="text-muted mr-2">Descrizione: </span>  {{ annuncio.descrizione }}</div>
+                <div class="font-size-lg text-primary pt-2">{{ annuncio.prezzo }} € </div>
+              </div>
+            </div>
+
+          </div>
+        </ng-container>
 
       </div>
       <!-- Sidebar-->

@@ -29,6 +29,7 @@ import { ListaAnnunciComponent } from './listaAnnunci/listaAnnunci.component';
 import {AnnuncioComponent} from "./annuncio/annuncio.component";
 import {CreazioneAnnuncioComponent} from "./creazioneAnnuncio/creazioneAnnuncio.component";
 import {SearchFilterPipe} from "./home/search-filter.pipe";
+import {AnnuncioMateriaPrimaComponent} from "./AnnuncioMateriaPrima/annuncioMateriaPrima.component";
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {SearchFilterPipe} from "./home/search-filter.pipe";
     ListaAnnunciComponent,
     AnnuncioComponent,
     CreazioneAnnuncioComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    AnnuncioMateriaPrimaComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,50 @@
+<app-menu></app-menu>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+<div class="container">
+  <!-- product -->
+  <div class="product-content product-wrap clearfix product-deatil">
+    <div class="row">
+      <div class="product-image col-md-5 col-sm-12 col-xs-12">
+          <img src="/assets/images/materiaPrima.jpg" />
+      </div>
+
+      <div class="column col-md-6 col-md-offset-1 col-sm-12 col-xs-12">
+        <h2 class ="name">
+          {{annuncioMateriaPrima?.materiaPrima}}
+        </h2>
+        <span class=" location" > <i class="fa fa-map-pin" aria-hidden="true"></i>
+              Torino (TO) </span>
+        <hr />
+        <div class="price-container font-size-lg text-primary pt-2">
+          {{annuncioMateriaPrima?.prezzo}} €
+
+          <hr />
+        </div>
+        <span class ="Disponibilita"> Disponibilità {{annuncioMateriaPrima?.quantita}} </span>
+        <hr />
+        <div class="description description-tabs">
+          <strong>Descrizione </strong>
+          <p class =descriptionContent>
+            {{annuncioMateriaPrima?.descrizione}}
+          </p>
+        </div>
+        <hr />
+        <div class="row">
+
+          <!--
+          <div class="contatta col-sm-12 col-md-6 col-lg-6">
+            <a href="javascript:void(0);" class="btn btn-success btn-lg "><i class="fa fa-comments-o" ></i> Contatta </a>
+          </div>
+           //-->
+
+          <a href="javascript:void(0);" class="btn btn-success btn-lg "><i class="fa fa-credit-card" ></i> Acquista </a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end product -->
+</div>
+
+

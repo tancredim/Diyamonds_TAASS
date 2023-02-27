@@ -2,6 +2,7 @@ import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { User } from '../user';
 import { UserService } from '../userService';
 
@@ -13,11 +14,13 @@ import { UserService } from '../userService';
 export class RegistratiComponent implements OnInit {
 
   user!: SocialUser;
+  userWithId!: User;
   loggedIn!: boolean;
   email!: string;
   nome!: string;
   cognome!: string;
   userString! : string;
+  listaUtenti? : User[];
 
   constructor(
     private userService: UserService,
@@ -50,13 +53,28 @@ export class RegistratiComponent implements OnInit {
     this.userString = JSON.stringify(infoUtente);
     this.addNewUser(JSON.parse(this.userString));
     console.log(JSON.parse(this.userString));
-    this.goToRegistrazioneCompletata(this.user, infoUtente);    
+    this.userService.getUserList();
+    this.userService.getAllUser().subscribe(data =>{
+      console.log("data: " + data);
+      this.listaUtenti = data;
+
+      data.forEach(element => {
+        console.log(element.email);
+        if (element.email == infoUtente.email) {
+
+          this.userWithId = element;
+        }
+      });
+
+
+    });
+    this.goToRegistrazioneCompletata(this.user, this.userWithId);    
   }
 
-  goToRegistrazioneCompletata(user: SocialUser, infoUtente: User): void {
+  goToRegistrazioneCompletata(user: SocialUser, userWithId: User): void {
 
     setTimeout(() => {
-      this.router.navigate(['/registrazioneCompletata'], {state: {data: user, infoUtente: infoUtente}});
+      this.router.navigate(['/registrazioneCompletata'], {state: {data: user, userWithId: this.userWithId}});
       console.log(user.email+" _ "+ user);
     }, 3000);  //3s
   }

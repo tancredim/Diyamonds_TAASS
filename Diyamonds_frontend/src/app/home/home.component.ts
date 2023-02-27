@@ -50,12 +50,8 @@ export class HomeComponent implements OnInit{
   ) {}
 
   ngOnInit() {
-    this.authService.authState.subscribe((user) => {
-      console.log("HOME");
-      this.user = history.state.data;
-      this.user2 = history.state.user2;
-      console.log(this.user2);
-    });
+    this.user2 = history.state.data;
+    console.log(history.state.data);
 
     this.slides[0] = {
       src: './assets/images/CollaneOro.jpg',
@@ -74,6 +70,7 @@ export class HomeComponent implements OnInit{
     this.CercaAnnunciMateriaPrima();
 
   }
+
   gioielli: Gioiello[] = [
     {value: 'bracciale', viewValue: 'Bracciale'},
     {value: 'collana', viewValue: 'Collana'},
@@ -136,6 +133,10 @@ export class HomeComponent implements OnInit{
     }
 
 
+  }
+
+  goToCreazioneAnnuncio(): void {
+    this.router.navigate(['/creazioneAnnuncio'], {state: {data: this.user2}});
   }
 
 

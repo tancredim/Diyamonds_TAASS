@@ -22,7 +22,7 @@ export class RegistrazioneCompletataComponent implements OnInit {
   ngOnInit() {
     this.authService.authState.subscribe((user) => {
       this.user = history.state.data;
-      this.user2 = history.state.infoUtente;
+      this.user2 = history.state.userWithId;
       console.log(this.user.email)
       console.log("INFO UTENTE")
       console.log(this.user2)
@@ -32,7 +32,7 @@ export class RegistrazioneCompletataComponent implements OnInit {
 
   goToHome(user: SocialUser, user2: User) {
     setTimeout(() => {
-      this.router.navigate(['/'], {state: {data: user, user2: this.user2}});
+      this.router.navigate(['/'], {state: {data: this.user2}});
       console.log("SIAMO QUIIUII");
       console.log(user2);  }, 2000);  //5s
   }

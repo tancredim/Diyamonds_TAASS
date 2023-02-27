@@ -59,7 +59,7 @@
 
 
     </form>
-    <div class="InserisciAnnuncio"  routerLink="/creazioneAnnuncio">
+    <button class="InserisciAnnuncio" (click)="goToCreazioneAnnuncio()">
 
       <div class="AddSymbol">
         <svg  class="filter-green" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
@@ -71,29 +71,14 @@
       </div>
       <span class="index-module_sbt-text-atom__ed5J9 index-module_token-button__eMeQT size-normal index-module_weight-semibold__MWtJJ">Inserisci annuncio</span>
 
-    </div>
+    </button>
 
 
   </mat-card>
   <mat-divider></mat-divider>
   <mat-card>
-    <h2 align="center"> Esplora le nostre sezioni</h2>
-    <mat-tab-group>
-      <mat-tab label="TabGioiello">
-        <mat-action-list>
-          <button  (click) = "searchTab(gioiello.value,true)" mat-list-item  *ngFor ="let gioiello of gioielli"> {{gioiello.viewValue}}
-            </button>
-        </mat-action-list>
-      </mat-tab>
-      <mat-tab label="TabMateriaPrima">
-        <mat-action-list >
-          <button  (click) = "searchTab(matPrima.value,false)" mat-list-item *ngFor ="let matPrima of materiaPrima"> {{matPrima.viewValue}}</button>
 
-        </mat-action-list>
-      </mat-tab>
-    </mat-tab-group>
 
-  </mat-card>
 
 
   <div class="container pb-5 mt-n2 mt-md-n3">
@@ -136,6 +121,8 @@
 
     </div>
   </div>
+</mat-card>
+
 
 </div>
 

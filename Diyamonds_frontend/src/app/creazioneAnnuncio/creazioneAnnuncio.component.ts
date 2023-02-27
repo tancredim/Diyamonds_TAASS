@@ -7,6 +7,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import * as Console from "console";
 import { ToastrService } from 'ngx-toastr';
 import {MatSelectChange} from "@angular/material/select";
+import { User } from '../user';
 
 @Component({
   selector: 'app-creazioneAnnuncio',
@@ -14,13 +15,21 @@ import {MatSelectChange} from "@angular/material/select";
   styleUrls: ['./creazioneAnnuncio.component.css']
 })
 
+
+
 export class CreazioneAnnuncioComponent {
   private id?: number;
   annuncio?: Annuncio;
   selectedData : any;
+  user2!: User;
 
   originalForm : FormGroup;
   form: FormGroup;
+
+  ngOnInit() {
+    console.log("History: " + history.state.data);
+    this.user2 = history.state.data;
+  }
 
   private baseURL ="";
   private URLAnnuncio = "http://localhost:8083/api/v1/ms2/annunciGioielli/creaAnnuncioGioiello";
@@ -84,7 +93,7 @@ isMateriaPrimaSelected: boolean =false;
       this.baseURL = this.URLMateriaPrima;
 
       this.form.removeControl('idVenditore');
-      this.form.addControl('idFornitore',new FormControl(2));
+      this.form.addControl('idFornitore',new FormControl(this.user2.id));
       // @ts-ignore
       const materiaPrima = this.form.get('gioiello').value;
       this.form.removeControl('gioiello');
@@ -92,7 +101,8 @@ isMateriaPrimaSelected: boolean =false;
 
 
     }else{
-
+      this.form.removeControl('idVenditore');
+      this.form.addControl('idVenditore',new FormControl(this.user2.id));
       this.baseURL = this.URLAnnuncio;
 
       this.form.removeControl('quantita');

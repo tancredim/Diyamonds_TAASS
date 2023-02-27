@@ -10,13 +10,17 @@ import { User } from './user';
 export class UserService {
 
 
-    private baseURL = "http://localhost:8080/api/v1/users";
-    private baseURL2 = "http://localhost:8080/api/v1/users/add/";
+    private baseURL = "http://localhost:8083/api/v1/ms1/users";
+    private baseURL2 = "http://localhost:8083/api/v1/ms1/users/add/";
 
   constructor(private httpClient: HttpClient) { }
 
   getUserList(): Observable<User[]>{
     return this.httpClient.get<[]>(this.baseURL);
+  }
+
+  getAllUser(): Observable<User[]>{
+    return this.httpClient.get<User[]>(this.baseURL);
   }
 
   addUser(body: JSON): Observable<Object>{

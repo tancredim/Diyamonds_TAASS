@@ -1,0 +1,25 @@
+.cart-item-thumb {
+    display: block;
+    width: 9rem;
+  
+  }
+  
+  .cart-item-thumb>img {
+    display: block;
+    width: 77%;
+  }
+  
+  .product-card-title>a {
+    color: #222;
+  }
+
+  .product-card-title {
+    display: block;
+    margin-bottom: 1.3rem;
+    padding-bottom: .875rem;
+    border-bottom: 1px dashed #e2e2e2;
+    font-size: 18px;
+    font-weight: normal;
+    margin-top: -10px;
+  
+  }

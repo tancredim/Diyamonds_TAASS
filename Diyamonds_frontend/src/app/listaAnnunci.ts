@@ -1,6 +1,6 @@
 export class ListaAnnunci {
     id? : number;
-    idVendtore?: number;
+    idVenditore?: number;
     descrizione?: string;
     gioiello?:string;
     prezzo?:number;

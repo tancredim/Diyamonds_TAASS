@@ -1,6 +1,7 @@
 import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from '../user';
 
 @Component({
   selector: 'app-menu',
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
+  user2!: User;
   user!: SocialUser;
   loggedIn!: boolean;
   isRegistrazioneCompletata!: boolean;
@@ -19,6 +21,9 @@ export class MenuComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+
+    this.user2 = history.state.data;
+
     this.authService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);
@@ -28,5 +33,13 @@ export class MenuComponent implements OnInit {
   logOut(): void {
     this.authService.signOut();
     this.router.navigate(['/']);
+  }
+
+  goToCreazioneAnnuncio(): void {
+    this.router.navigate(['/creazioneAnnuncio'], {state: {data: this.user2}});
+  }
+
+  goToVisualizzaProfilo(): void {
+    this.router.navigate(['/visualizzaProfilo'], {state: {data: this.user2, user: this.user, photo: this.user.photoUrl}});
   }
 }

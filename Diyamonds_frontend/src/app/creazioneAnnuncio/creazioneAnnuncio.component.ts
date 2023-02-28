@@ -27,7 +27,6 @@ export class CreazioneAnnuncioComponent {
   form: FormGroup;
 
   ngOnInit() {
-    console.log("History: " + history.state.data);
     this.user2 = history.state.data;
   }
 

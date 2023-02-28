@@ -30,6 +30,7 @@ import {AnnuncioComponent} from "./annuncio/annuncio.component";
 import {CreazioneAnnuncioComponent} from "./creazioneAnnuncio/creazioneAnnuncio.component";
 import {SearchFilterPipe} from "./home/search-filter.pipe";
 import {AnnuncioMateriaPrimaComponent} from "./AnnuncioMateriaPrima/annuncioMateriaPrima.component";
+import { VisualizzaProfiloComponent } from './visualizza-profilo/visualizza-profilo.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {AnnuncioMateriaPrimaComponent} from "./AnnuncioMateriaPrima/annuncioMate
     AnnuncioComponent,
     CreazioneAnnuncioComponent,
     SearchFilterPipe,
-    AnnuncioMateriaPrimaComponent
+    AnnuncioMateriaPrimaComponent,
+    VisualizzaProfiloComponent
   ],
   imports: [
     BrowserModule,

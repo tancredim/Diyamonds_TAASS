@@ -15,14 +15,18 @@ export class MenuComponent implements OnInit {
   loggedIn!: boolean;
   isRegistrazioneCompletata!: boolean;
 
+  public static utente: User;
+
   constructor(
     private authService: SocialAuthService,
     private router: Router
   ) {}
 
   ngOnInit() {
-
-    this.user2 = history.state.data;
+    if (history.state.check == 1) {
+      this.user2 = history.state.data;
+      MenuComponent.utente = history.state.data;
+    }
 
     this.authService.authState.subscribe((user) => {
       this.user = user;
@@ -36,10 +40,10 @@ export class MenuComponent implements OnInit {
   }
 
   goToCreazioneAnnuncio(): void {
-    this.router.navigate(['/creazioneAnnuncio'], {state: {data: this.user2}});
+    this.router.navigate(['/creazioneAnnuncio']);
   }
 
   goToVisualizzaProfilo(): void {
-    this.router.navigate(['/visualizzaProfilo'], {state: {data: this.user2, user: this.user, photo: this.user.photoUrl}});
+    this.router.navigate(['/visualizzaProfilo'], {state: {user: this.user, photo: this.user.photoUrl}});
   }
 }

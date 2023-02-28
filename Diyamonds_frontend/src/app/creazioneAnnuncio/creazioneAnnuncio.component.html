@@ -3,17 +3,19 @@
 
 <div id="contact" class="contact-area">
   <div class="container">
+    <div align="right">
+      <h5>{{user2.email}}</h5>
+    </div>
     <div class="section-title text-center">
       <br>
-      <h1>Inserisci il tuo annuncio in pochi minuti</h1>
-
+      <h1>Inserisci il tuo annuncio</h1>
     </div>
     <div class="row">
       <div class="col-lg-7">
         <div class="contact">
           <div *ngIf="message"
             class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Success !</strong> Annuncio inserito
+            <strong>Annuncio inserito</strong> 
             <button (click) = "removeMessage()"
               type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
@@ -41,8 +43,12 @@
                 <mat-form-field appearance="fill">
                   <mat-label>Tipo di annuncio ?</mat-label>
                   <mat-select (selectionChange)="selectedValue($event)">
-                    <mat-option [value]="'TypeGioiello'">Gioiello</mat-option>
-                    <mat-option [value]="'TypeMateriaPrima'">Materia Prima</mat-option>
+                    <div *ngIf="check">
+                      <mat-option [value]="'TypeGioiello'">Gioiello</mat-option>
+                    </div>
+                    <div *ngIf="!check">
+                      <mat-option [value]="'TypeMateriaPrima'">Materia Prima</mat-option>
+                    </div>
                   </mat-select>
                 </mat-form-field>
               </div>
@@ -52,7 +58,7 @@
                           formControlName="descrizione" required="required"></textarea>
               </div>
               <div class="form-group prezzo">
-                <input type="text" name="prezzo" class="form-control" placeholder="Prezzo € "
+                <input type="text" name="prezzo" class="form-control" placeholder="Prezzo"
                        formControlName="prezzo" required="required">
 
               </div>

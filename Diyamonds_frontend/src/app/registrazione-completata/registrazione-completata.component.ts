@@ -32,8 +32,7 @@ export class RegistrazioneCompletataComponent implements OnInit {
 
   goToHome(user: SocialUser, user2: User) {
     setTimeout(() => {
-      this.router.navigate(['/'], {state: {data: this.user2}});
-      console.log("SIAMO QUIIUII");
+      this.router.navigate(['/'], {state: {data: this.user2, check:1}});
       console.log(user2);  }, 2000);  //5s
   }
 

@@ -7,6 +7,7 @@ import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {MatSelectChange} from "@angular/material/select";
 import {ListaAnnunciMateriaPrima} from "../listaAnnunci";
+import { MenuComponent } from '../menu/menu.component';
 
 export interface Gioiello {
   value: string;
@@ -26,9 +27,9 @@ export interface MateriaPrima {
 
 export class HomeComponent implements OnInit{
 
-  private user!: SocialUser;
-  private userString!: string;
-  private user2!: User;
+  user!: SocialUser;
+  userString!: string;
+  user2!: User;
   searchTerm = '';
   selectedData : any;
   annunci: ListaAnnunci[] =[];
@@ -50,9 +51,8 @@ export class HomeComponent implements OnInit{
   ) {}
 
   ngOnInit() {
-    this.user2 = history.state.data;
-    console.log(history.state.data);
-
+    this.user2 = MenuComponent.utente
+    
     this.slides[0] = {
       src: './assets/images/CollaneOro.jpg',
       title: "Collane in oro"

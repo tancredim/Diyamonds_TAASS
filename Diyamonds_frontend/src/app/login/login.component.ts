@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
 
 
       if (this.userExist) {
-        this.router.navigate(['/'], {state: {data: this.user2}});
+        this.router.navigate(['/'], {state: {data: this.user2,check:1}});
       } else {
         this.router.navigate(['/registrati'], {state: {data: this.user}});
       }

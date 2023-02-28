@@ -8,6 +8,7 @@ import * as Console from "console";
 import { ToastrService } from 'ngx-toastr';
 import {MatSelectChange} from "@angular/material/select";
 import { User } from '../user';
+import { MenuComponent } from '../menu/menu.component';
 
 @Component({
   selector: 'app-creazioneAnnuncio',
@@ -22,12 +23,18 @@ export class CreazioneAnnuncioComponent {
   annuncio?: Annuncio;
   selectedData : any;
   user2!: User;
+  check!:boolean;
 
   originalForm : FormGroup;
   form: FormGroup;
 
   ngOnInit() {
-    this.user2 = history.state.data;
+    this.user2 = MenuComponent.utente;
+    if (MenuComponent.utente.isVenditoreFornitore == 1 ) {
+      this.check=true;
+    } else {
+      this.check=false;
+    }
   }
 
   private baseURL ="";

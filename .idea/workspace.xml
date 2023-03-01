@@ -5,11 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="158c2449-9bec-4cce-9ddb-a8efa423ce32" name="Changes" comment="added kubernetes yaml file">
-      <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/src/app/creazioneAnnuncio/creazioneAnnuncio.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/creazioneAnnuncio/creazioneAnnuncio.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/src/app/menu/menu.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/menu/menu.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/src/app/menu/menu.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/menu/menu.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diyamonds_frontend/src/app/registrati/registrati.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Diyamonds_frontend/src/app/registrati/registrati.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diyamonds_backend_1/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/diyamonds_backend_1/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diyamonds_backend_1/target/classes/it/unito/taass/diyamonds/controller/FornitoreController.class" beforeDir="false" afterPath="$PROJECT_DIR$/diyamonds_backend_1/target/classes/it/unito/taass/diyamonds/controller/FornitoreController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diyamonds_backend_1/target/classes/it/unito/taass/diyamonds/model/AnnuncioMateriaPrima.class" beforeDir="false" afterPath="$PROJECT_DIR$/diyamonds_backend_1/target/classes/it/unito/taass/diyamonds/model/AnnuncioMateriaPrima.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diyamonds_backend_1/target/classes/it/unito/taass/diyamonds/mq/RabbitMQConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/diyamonds_backend_1/target/classes/it/unito/taass/diyamonds/mq/RabbitMQConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diyamonds_backend_1/target/diyamonds_backend_1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/diyamonds_backend_1/target/diyamonds_backend_1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diyamonds_backend_1/target/diyamonds_backend_1.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/diyamonds_backend_1/target/diyamonds_backend_1.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-server-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-server-deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-server-service.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/eureka-server-service.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kubernetes-services-deployments.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/kubernetes-services-deployments.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

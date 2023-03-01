@@ -89,14 +89,18 @@ services:
       kompose.service.nodeport.port: "30000"
 
 
-  #ui:
-      #build: .\Diyamonds_frontend
-      #container_name: diyamonds_frontend
-      #ports:
-      #  - "4200:80"
-      #depends_on:
-      #  - app
-      #  - app2
+  ui:
+    image: tancredim/diyamonds_taass-ui
+    #build: ./Diyamonds_frontend
+    container_name: diyamonds_frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - app
+      - app2
+    labels:
+      kompose.service.type: NodePort
+      kompose.service.nodeport.port: "30002"
 volumes:
   db-data:
   db-data2:

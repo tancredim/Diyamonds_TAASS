@@ -1,55 +1,39 @@
 <app-menu></app-menu>
 
-<div>
+<div class="card mb-4">
     <form #infoUtenteForm="ngForm" (ngSubmit)="completaLaRegistrazione(infoUtenteForm.value)">
+      <h3 class="h6 bold mb-4"> Ciao {{nome}} {{cognome}} </h3>
+      <h3 class="h6 bold mb-4"> Email : {{email}} </h3>
+      <h3 class="h6 mb-4"> Compila il form qui sotto per completare la registrazione </h3>
+      <div class="form-outline mb-3">
+        <label class="form-label" for="form3Example3">Username: </label>
+        <input type="text" class="form-control" name="username" ngModel />
+      </div>
 
-        <p>Ciao {{nome}} {{cognome}}</p>
-        <p>la tua mail è {{email}}</p>
-        <p>Compila il form qui sotto per completare la registrazione</p>
-        <!-- <div class="form-outline">
-            <label class="form-label" for="form3Example1">Nome: {{nome}}</label>
-            <input hidden type="text" name="nomeInput" ngModel value="{{nome}}"/>
-        </div>
+      <div class="form-outline mb-3">
+        <label class="form-label" for="form3Example3">Password: </label>
+        <input type="password" class="form-control" name="password" ngModel />
+      </div>
 
-        <div class="form-outline">
-            <label class="form-label" for="form3Example2">Cognome: {{cognome}}</label>
-            <input hidden type="text" name="cognomeInput" ngModel value="{{cognome}}"/>
-        </div>
+      <div class="form-outline mb-3">
+        <label class="form-label" for="form3Example3">Numero di telefono: </label>
+        <input type="number" class="form-control" name="telefono" ngModel />
+      </div>
 
-        <div class="form-outline mb-4">
-            <label class="form-label" for="form3Example3">Email: {{email}}</label>
-            <input hidden type="text" name="emailInput" ngModel value="{{email}}"/>
-        </div> -->
+      <div class="form-outline  mb-3">
+        <label class="form-label" >Sei un venditore o un fornitore? </label>
+        <select   name="isVenditoreFornitore" ngModel>
+          <option value="" selected disabled >Choose...</option>
+          <option value="0">Nessuno </option>
+          <option value="1">Venditore</option>
+          <option value="2">Fornitore </option>
+        </select>
+      </div>
 
-        <!-- Username input -->
-        <div class="form-outline mb-4">
-            <label class="form-label" for="form3Example3">Username: </label>
-            <input type="text" name="username" ngModel />
-        </div>
 
-        <!-- Password input -->
-        <div class="form-outline mb-4">
-            <label class="form-label" for="form3Example3">Password: </label>
-            <input type="password" name="password" ngModel />
-        </div>
-
-        <!-- numero telefono input -->
-        <div class="form-outline mb-4">
-            <label class="form-label" for="form3Example3">Numero di telefono: </label>
-            <input type="number" name="telefono" ngModel />
-        </div>
-
-        <!-- tipo utente input -->
-        <div class="form-outline mb-4">
-            <label>Sei un venditore o un fornitore? </label>
-            <select name="isVenditoreFornitore" ngModel>
-                <option value="0">Nessuno </option>
-                <option value="1">Venditore</option>
-                <option value="2">Fornitore </option>
-            </select>
-        </div>
-
-        <!-- Submit button -->
-        <button type="submit" class="btn btn-primary btn-block mb-4">Completa la registrazione</button>
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-primary btn-block mb-4">Completa la registrazione</button>
     </form>
-</div>
+  </div>
+
+
